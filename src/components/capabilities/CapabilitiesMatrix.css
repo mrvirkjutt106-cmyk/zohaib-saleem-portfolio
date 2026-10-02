@@ -1,0 +1,289 @@
+/**
+ * CapabilitiesMatrix.css — Interactive 6-Area Capability Ecosystem
+ * Clean cards, rich hover feedback, dynamic live inspector
+ */
+
+.capabilities-ecosystem-section {
+  background-color: var(--color-bg-subtle);
+  border-top: 1px solid rgba(11, 19, 43, 0.05);
+  border-bottom: 1px solid rgba(11, 19, 43, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.capabilities-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+  margin-top: var(--space-2);
+}
+
+.capabilities-subtitle {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin-top: var(--space-2);
+}
+
+/* 6-Card Ecosystem Grid */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+@media (min-width: 680px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual Card */
+.capability-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 19, 43, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  cursor: pointer;
+  transition: all var(--dur-normal) var(--ease-out);
+  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.03);
+  position: relative;
+}
+
+.capability-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 28px -4px rgba(11, 19, 43, 0.08);
+}
+
+.capability-card--active {
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 12px 32px -6px rgba(37, 99, 235, 0.18);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%);
+}
+
+.cap-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cap-icon {
+  font-size: 1.6rem;
+}
+
+.cap-indicator-pill {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  background: rgba(11, 19, 43, 0.04);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-pill);
+}
+
+.capability-card--active .cap-indicator-pill {
+  background: var(--color-accent-blue);
+  color: #FFFFFF;
+}
+
+.cap-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.cap-card-subtitle {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.cap-card-summary {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+  flex: 1;
+}
+
+/* Connected strip */
+.cap-connected-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(11, 19, 43, 0.05);
+}
+
+.cap-connected-label {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-faint);
+}
+
+.cap-mini-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cap-mini-tag {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(11, 19, 43, 0.03);
+  color: var(--color-text-secondary);
+}
+
+.capability-card--active .cap-mini-tag {
+  background: #FFFFFF;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: var(--color-accent-blue);
+  font-weight: 500;
+}
+
+/* Live Active Inspector Panel */
+.capability-inspector {
+  margin-top: var(--space-8);
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 19, 43, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-8);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  box-shadow: 0 8px 30px rgba(11, 19, 43, 0.06);
+}
+
+@media (min-width: 860px) {
+  .capability-inspector {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+  }
+}
+
+.inspector-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inspector-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-blue);
+}
+
+.inspector-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-blue);
+}
+
+.inspector-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.inspector-summary {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.inspector-project-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--space-2);
+  font-size: 0.84rem;
+}
+
+.link-label {
+  color: var(--color-text-muted);
+}
+
+.link-value {
+  font-weight: 700;
+  color: var(--color-accent-blue);
+}
+
+/* Inspector Right: Skills Grid */
+.inspector-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inspector-skills-header {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.inspector-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+@media (min-width: 500px) {
+  .inspector-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.inspector-skill-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg-subtle);
+  border: 1px solid rgba(11, 19, 43, 0.06);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.skill-check {
+  color: var(--color-accent-emerald);
+  font-weight: 800;
+}

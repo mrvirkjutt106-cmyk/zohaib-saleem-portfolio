@@ -1,0 +1,331 @@
+/**
+ * CaVisualTrajectory.css — Visual Progression & Interactive Examination Matrix
+ * Clean horizontal pipeline, modern pass/preparing cards
+ */
+
+.journey-trajectory-section {
+  background-color: var(--color-bg-base);
+  border-bottom: 1px solid rgba(11, 19, 43, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+  margin-top: var(--space-2);
+}
+
+.journey-subtitle {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin-top: var(--space-2);
+}
+
+/* 4-Step Pipeline */
+.journey-pipeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  .journey-pipeline {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+.journey-node {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 19, 43, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: all var(--dur-normal) var(--ease-out);
+  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.03);
+}
+
+.journey-node:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 24px -4px rgba(11, 19, 43, 0.08);
+}
+
+.journey-node--active {
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.15);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+}
+
+.journey-node__tracker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.node-step-num {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-accent-blue);
+}
+
+.node-status-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--color-accent-emerald);
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.journey-node--active .node-status-icon {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-accent-blue);
+}
+
+.journey-node__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.node-status-badge {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-blue);
+  margin-bottom: 2px;
+}
+
+.node-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.node-subtitle {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.node-desc {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+}
+
+/* Examination Matrix Wrapper */
+.caf-matrix-wrapper {
+  margin-top: var(--space-12);
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 19, 43, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: 0 4px 20px -2px rgba(11, 19, 43, 0.04);
+}
+
+.caf-matrix-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(11, 19, 43, 0.06);
+}
+
+@media (min-width: 768px) {
+  .caf-matrix-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.caf-matrix-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.matrix-badge {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-blue);
+}
+
+.matrix-heading {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* Toggle Group */
+.matrix-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-bg-subtle);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+}
+
+.matrix-toggle-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.matrix-toggle-btn--active {
+  background: #FFFFFF;
+  color: var(--color-navy);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(11, 19, 43, 0.08);
+}
+
+/* Columns */
+.caf-matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 860px) {
+  .caf-matrix-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.caf-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.caf-column-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.caf-column-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.caf-column-status-dot--emerald {
+  background: var(--color-accent-emerald);
+}
+
+.caf-column-status-dot--amber {
+  background: var(--color-accent-gold);
+}
+
+.caf-column-label {
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-navy);
+}
+
+.caf-papers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.caf-paper-card {
+  background: var(--color-bg-subtle);
+  border: 1px solid rgba(11, 19, 43, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.caf-paper-card:hover {
+  transform: translateY(-1px);
+  background: #FFFFFF;
+  border-color: rgba(11, 19, 43, 0.15);
+  box-shadow: 0 4px 12px rgba(11, 19, 43, 0.04);
+}
+
+.paper-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.paper-code {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.paper-status-pill {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--color-accent-emerald);
+}
+
+.paper-status-pill--amber {
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--color-accent-gold);
+}
+
+.paper-name {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.paper-domain {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}

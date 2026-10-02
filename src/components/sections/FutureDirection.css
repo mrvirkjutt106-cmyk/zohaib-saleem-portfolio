@@ -1,0 +1,146 @@
+/* ═══════════════════════════════════════════════════
+   FUTURE DIRECTION — Career Direction Statement
+   Zohaib Saleem — Accounting × Data × AI × Audit
+   ═══════════════════════════════════════════════════ */
+
+.direction-section {
+  position: relative;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-hairline);
+  overflow: hidden;
+}
+
+.direction-header {
+  margin-bottom: 40px;
+  max-width: 820px;
+}
+
+.direction-title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 800;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-navy);
+  margin-bottom: 12px;
+}
+
+.direction-subtitle {
+  font-family: var(--font-sans);
+  font-size: var(--text-lead);
+  line-height: var(--lh-lead);
+  color: var(--color-ink-mid);
+}
+
+/* ── 4 Pillars (Editorial Columns, NOT cards) ─────── */
+
+.direction-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 32px;
+  row-gap: 32px;
+  margin-bottom: 44px;
+}
+
+.direction-pillar {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  border-top: 2px solid var(--color-navy);
+  position: relative;
+}
+
+.direction-pillar__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.direction-pillar__num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-blue);
+  letter-spacing: var(--ls-wide);
+}
+
+.direction-pillar__rule {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-hairline);
+}
+
+.direction-pillar__title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--color-navy);
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.direction-pillar__desc {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-ink-mid);
+}
+
+/* ── Compact Editorial Closing Statement (Replaces oversized dark-blue block) ─ */
+
+.direction-closing {
+  padding: 24px 32px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-hairline);
+  border-left: 3px solid var(--color-navy);
+  border-radius: var(--radius-sm);
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.direction-closing__text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .direction-pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .direction-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .direction-header {
+    margin-bottom: 28px;
+  }
+
+  .direction-pillars {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .direction-closing {
+    padding: 18px 20px;
+  }
+}

@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════
+   TYPOGRAPHY — The Editorial Laboratory
+   Accounting × Data × AI
+   ═══════════════════════════════════════════════════ */
+
+/* ── Font Family Utilities ───────────────────────── */
+
+.font-display { font-family: var(--font-display); }
+.font-sans    { font-family: var(--font-sans); }
+.font-mono    { font-family: var(--font-mono); }
+.font-serif   { font-family: var(--font-serif); }
+
+/* ── Editorial Tag Badges ────────────────────────── */
+
+.system-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.system-tag--blue {
+  border-color: rgba(37, 99, 235, 0.25);
+  color: var(--color-accent-blue);
+  background: var(--color-accent-blue-light);
+}
+
+.system-tag--gold {
+  border-color: rgba(217, 119, 6, 0.3);
+  color: var(--color-accent-gold);
+  background: var(--color-accent-gold-light);
+}
+
+.system-tag--green {
+  border-color: rgba(5, 150, 105, 0.3);
+  color: var(--color-status-pass);
+  background: #ECFDF5;
+}
+
+/* ── Monospace Code Inline ───────────────────────── */
+
+.code-inline {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  background: var(--color-bg-subtle);
+  color: var(--color-accent-blue);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* ── Editorial Pullquote ─────────────────────────── */
+
+.editorial-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--color-navy);
+  border-left: 3px solid var(--color-accent-blue);
+  padding-left: 24px;
+}

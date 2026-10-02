@@ -1,0 +1,29 @@
+.system-crosshair {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  color: var(--color-accent-cyan);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.system-crosshair--top-left {
+  top: -6px;
+  left: -6px;
+}
+
+.system-crosshair--top-right {
+  top: -6px;
+  right: -6px;
+}
+
+.system-crosshair--bottom-left {
+  bottom: -6px;
+  left: -6px;
+}
+
+.system-crosshair--bottom-right {
+  bottom: -6px;
+  right: -6px;
+}

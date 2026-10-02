@@ -1,0 +1,250 @@
+/**
+ * FutureTrajectory.css — Compact Progression Workflow Diagram
+ * Technical editorial aesthetic, connecting lines, significant height reduction
+ */
+
+.direction-diagram-section {
+  background-color: var(--color-bg-base);
+  border-bottom: 1px solid rgba(11, 19, 43, 0.06);
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-12) 0;
+}
+
+.direction-diagram-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 2.8vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+  margin-top: var(--space-2);
+}
+
+.direction-diagram-subtitle {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 680px;
+  margin-top: var(--space-2);
+}
+
+/* Workflow Diagram Container */
+.workflow-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 1040px;
+  margin: var(--space-8) auto 0 auto;
+}
+
+/* Rows */
+.workflow-diagram__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.workflow-diagram__row--bottom {
+  justify-content: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Individual Workflow Node */
+.workflow-node {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 19, 43, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.03);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.workflow-node:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 6px 16px -2px rgba(11, 19, 43, 0.08);
+}
+
+.workflow-node--destination {
+  border-color: rgba(37, 99, 235, 0.25);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+.workflow-node__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.workflow-node__num {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent-blue);
+}
+
+.workflow-node__subtitle {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.workflow-node__subtitle--emerald {
+  color: var(--color-accent-blue);
+  font-weight: 700;
+}
+
+.workflow-node__title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin: 0;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.workflow-node__focus {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.workflow-node__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.workflow-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+}
+
+.workflow-tag--emerald {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-accent-blue);
+}
+
+/* Connectors */
+.workflow-connector {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.workflow-connector--horizontal {
+  width: 32px;
+  justify-content: center;
+}
+
+.connector-line {
+  width: 18px;
+  height: 1px;
+  background: rgba(11, 19, 43, 0.2);
+}
+
+.connector-arrow {
+  color: var(--color-accent-blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Row Transition Bend (Desktop) */
+.workflow-row-transition {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 15%;
+  margin: -4px 0;
+}
+
+.row-transition-line {
+  width: 1px;
+  height: 16px;
+  background: rgba(37, 99, 235, 0.3);
+}
+
+.row-transition-arrow {
+  color: var(--color-accent-blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Compact Commitment Callout */
+.workflow-commitment-callout {
+  max-width: 760px;
+  margin: var(--space-8) auto 0 auto;
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--color-accent-blue);
+}
+
+.callout-text {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-navy);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Mobile Responsive Transformation */
+@media (max-width: 820px) {
+  .workflow-diagram {
+    gap: var(--space-3);
+  }
+
+  .workflow-diagram__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .workflow-diagram__row--bottom {
+    max-width: 100%;
+  }
+
+  .workflow-connector--horizontal {
+    width: auto;
+    height: 20px;
+    flex-direction: column;
+  }
+
+  .connector-line {
+    width: 1px;
+    height: 12px;
+  }
+
+  .connector-arrow {
+    transform: rotate(90deg);
+  }
+
+  .workflow-row-transition {
+    display: none;
+  }
+
+  .workflow-node__title {
+    white-space: normal;
+  }
+}

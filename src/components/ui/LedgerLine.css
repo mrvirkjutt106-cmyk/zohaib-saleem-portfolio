@@ -1,0 +1,34 @@
+.ledger-line {
+  border: none;
+  height: var(--line-weight);
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Color variants ── */
+
+.ledger-line--hairline {
+  background-color: var(--color-hairline);
+}
+
+.ledger-line--accent {
+  background-color: var(--color-accent);
+}
+
+/* ── Width variants ── */
+
+.ledger-line--full {
+  width: 100%;
+}
+
+.ledger-line--inset {
+  /* Respects the outer margin on both sides */
+  margin-left: var(--margin-outer);
+  margin-right: var(--margin-outer);
+  width: calc(100% - 2 * var(--margin-outer));
+}
+
+.ledger-line--content {
+  /* Used inside content areas — inherits width from parent */
+  width: 100%;
+}
