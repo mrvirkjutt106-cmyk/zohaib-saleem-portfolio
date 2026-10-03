@@ -1,250 +1,421 @@
 /**
- * FutureTrajectory.css — Compact Progression Workflow Diagram
- * Technical editorial aesthetic, connecting lines, significant height reduction
+ * FutureTrajectory.css — Chapter 07: Future Direction & Trajectory
+ *
+ * Connected Directional Progression:
+ * ACCOUNTING → DATA → SYSTEMS → AI → AUDIT
+ *
+ * Responsive ranges (strictly non-overlapping):
+ * - Mobile:  0–767px  (@media (max-width: 767px))
+ * - Tablet:  768–1023px (@media (min-width: 768px) and (max-width: 1023px))
+ * - Desktop: 1024px+ (@media (min-width: 1024px))
  */
 
-.direction-diagram-section {
-  background-color: var(--color-bg-base);
-  border-bottom: 1px solid rgba(11, 19, 43, 0.06);
+/* ── Section Canvas ───────────────────────────────────────────── */
+.trajectory-section {
   position: relative;
+  background: linear-gradient(165deg, #060D1E 0%, #09132C 45%, #081126 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--section-padding-y) 0;
   overflow: hidden;
-  padding: var(--space-12) 0;
+  color: var(--color-text-inverted);
 }
 
-.direction-diagram-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.85rem, 2.8vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--color-navy);
-  margin-top: var(--space-2);
+/* Atmospheric glow effects */
+.trajectory-section::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: 5%;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
 }
 
-.direction-diagram-subtitle {
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-  max-width: 680px;
-  margin-top: var(--space-2);
+.trajectory-section::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: 5%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.10) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
 }
 
-/* Workflow Diagram Container */
-.workflow-diagram {
+.trajectory-container {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  max-width: 1040px;
-  margin: var(--space-8) auto 0 auto;
+  gap: clamp(24px, 3.2vw, 38px);
+  position: relative;
+  z-index: 1;
 }
 
-/* Rows */
-.workflow-diagram__row {
+/* ── Section Header (Dark Mode) ─────────────────────────────── */
+.trajectory-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: var(--space-3);
+  max-width: 820px;
+}
+
+.section-eyebrow--dark {
+  color: #93C5FD;
+}
+
+.section-eyebrow__pip--dark {
+  background: #3B82F6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+}
+
+.trajectory-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.trajectory-intro {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
+  color: #94A3B8;
+  margin: 0;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   CONNECTED DIRECTIONAL TRAJECTORY STREAM
+   ═════════════════════════════════════════════════════════════════ */
+.trajectory-stream-wrap {
+  position: relative;
   width: 100%;
 }
 
-.workflow-diagram__row--bottom {
-  justify-content: center;
-  max-width: 720px;
-  margin: 0 auto;
+.trajectory-stages-track {
+  display: grid;
+  gap: var(--space-4);
+  position: relative;
+  z-index: 2;
 }
 
-/* Individual Workflow Node */
-.workflow-node {
-  background: #FFFFFF;
-  border: 1px solid rgba(11, 19, 43, 0.08);
-  border-radius: var(--radius-md);
-  padding: var(--space-4) var(--space-5);
+/* Individual Stage Card */
+.trajectory-node {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  flex: 1;
-  min-width: 0;
-  box-shadow: 0 2px 8px rgba(11, 19, 43, 0.03);
-  transition: all var(--dur-fast) var(--ease-out);
+  gap: var(--space-2);
+  transition: transform var(--dur-normal) var(--ease-out),
+              background-color var(--dur-normal) var(--ease-out),
+              border-color var(--dur-normal) var(--ease-out),
+              box-shadow var(--dur-normal) var(--ease-out);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.workflow-node:hover {
+.trajectory-node:hover {
   transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.3);
-  box-shadow: 0 6px 16px -2px rgba(11, 19, 43, 0.08);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.15);
 }
 
-.workflow-node--destination {
-  border-color: rgba(37, 99, 235, 0.25);
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%);
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+/* Node Anchor Pip */
+.node-anchor-pip {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-2);
 }
 
-.workflow-node__header {
+.pip-outer {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pip-core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #60A5FA;
+}
+
+/* Differentiated Destination: Audit & Assurance */
+.trajectory-node--destination {
+  background: linear-gradient(160deg, rgba(37, 99, 235, 0.12) 0%, rgba(16, 185, 129, 0.10) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  box-shadow: 0 8px 30px -4px rgba(37, 99, 235, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.trajectory-node--destination:hover {
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 12px 36px -4px rgba(37, 99, 235, 0.3);
+}
+
+.trajectory-node--destination .pip-outer {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.trajectory-node--destination .pip-core {
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+}
+
+/* Node Head */
+.node-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
-.workflow-node__num {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
+.node-num {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--color-accent-blue);
+  color: #93C5FD;
 }
 
-.workflow-node__subtitle {
+.node-tag {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+
+.node-tag--destination {
+  color: #6EE7B7;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Node Titles & Text */
+.node-title {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.node-pillar-label {
   font-family: var(--font-heading);
   font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-}
-
-.workflow-node__subtitle--emerald {
-  color: var(--color-accent-blue);
   font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #60A5FA;
 }
 
-.workflow-node__title {
-  font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--color-navy);
-  margin: 0;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.workflow-node__focus {
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: var(--color-text-secondary);
+.node-desc {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #CBD5E1;
   margin: 0;
 }
 
-.workflow-node__tags {
+/* Supporting Ideas Row (Audit) */
+.node-ideas-row {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-top: 2px;
+  margin-top: var(--space-2);
 }
 
-.workflow-tag {
+.idea-pill {
+  font-family: var(--font-heading);
   font-size: 0.68rem;
   font-weight: 600;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: var(--radius-pill);
-  background: var(--color-bg-subtle);
-  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.workflow-tag--emerald {
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--color-accent-blue);
-}
-
-/* Connectors */
-.workflow-connector {
+/* ── Concluding Statement Card ──────────────────────────────── */
+.trajectory-statement-card {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: var(--space-5);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-8);
+  max-width: 860px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.statement-line {
+  width: 3px;
+  height: 38px;
+  background: linear-gradient(180deg, #3B82F6 0%, #10B981 100%);
+  border-radius: var(--radius-pill);
   flex-shrink: 0;
 }
 
-.workflow-connector--horizontal {
-  width: 32px;
-  justify-content: center;
-}
-
-.connector-line {
-  width: 18px;
-  height: 1px;
-  background: rgba(11, 19, 43, 0.2);
-}
-
-.connector-arrow {
-  color: var(--color-accent-blue);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-/* Row Transition Bend (Desktop) */
-.workflow-row-transition {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-right: 15%;
-  margin: -4px 0;
-}
-
-.row-transition-line {
-  width: 1px;
-  height: 16px;
-  background: rgba(37, 99, 235, 0.3);
-}
-
-.row-transition-arrow {
-  color: var(--color-accent-blue);
-  font-size: 0.85rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-/* Compact Commitment Callout */
-.workflow-commitment-callout {
-  max-width: 760px;
-  margin: var(--space-8) auto 0 auto;
-  padding-left: var(--space-4);
-  border-left: 3px solid var(--color-accent-blue);
-}
-
-.callout-text {
+.statement-text {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--color-navy);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #F1F5F9;
   font-style: italic;
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
-/* Mobile Responsive Transformation */
-@media (max-width: 820px) {
-  .workflow-diagram {
-    gap: var(--space-3);
+/* ═════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINT BEHAVIOR
+   ═════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Desktop: 1024px+ ────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .trajectory-vector-conduit {
+    position: absolute;
+    top: calc(var(--space-5) + 9px);
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    z-index: 1;
   }
 
-  .workflow-diagram__row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-3);
+  .vector-conduit-line {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      rgba(37, 99, 235, 0.2) 0%,
+      rgba(37, 99, 235, 0.4) 40%,
+      rgba(96, 165, 250, 0.6) 75%,
+      rgba(52, 211, 153, 0.8) 100%);
   }
 
-  .workflow-diagram__row--bottom {
-    max-width: 100%;
+  .vector-conduit-glow {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(37, 99, 235, 0.3) 50%,
+      rgba(16, 185, 129, 0.4) 100%);
+    filter: blur(4px);
   }
 
-  .workflow-connector--horizontal {
-    width: auto;
-    height: 20px;
-    flex-direction: column;
+  .trajectory-stages-track {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
   }
 
-  .connector-line {
-    width: 1px;
-    height: 12px;
+  .trajectory-node {
+    padding: var(--space-5) var(--space-4);
   }
 
-  .connector-arrow {
-    transform: rotate(90deg);
+  .node-title {
+    font-size: 1.05rem;
   }
+}
 
-  .workflow-row-transition {
+/* ── 2. Tablet: 768–1023px ──────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .trajectory-vector-conduit {
     display: none;
   }
 
-  .workflow-node__title {
-    white-space: normal;
+  .trajectory-stages-track {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .trajectory-node--destination {
+    grid-column: span 2;
+  }
+
+  .trajectory-node {
+    padding: var(--space-5);
+  }
+}
+
+/* ── 3. Mobile: 0–767px ─────────────────────────────────────── */
+@media (max-width: 767px) {
+  .trajectory-section {
+    padding: var(--space-10) 0;
+  }
+
+  .trajectory-container {
+    gap: var(--space-8);
+  }
+
+  .trajectory-vector-conduit {
+    display: none;
+  }
+
+  /* Intentional vertical narrative progression */
+  .trajectory-stages-track {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    position: relative;
+    padding-left: var(--space-2);
+  }
+
+  .trajectory-node {
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .node-title {
+    font-size: 1.05rem;
+  }
+
+  .node-desc {
+    font-size: 0.8rem;
+  }
+
+  .trajectory-statement-card {
+    padding: var(--space-4) var(--space-5);
+    gap: var(--space-4);
+  }
+
+  .statement-line {
+    height: 32px;
+  }
+
+  .statement-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .trajectory-node {
+    transition: none;
   }
 }

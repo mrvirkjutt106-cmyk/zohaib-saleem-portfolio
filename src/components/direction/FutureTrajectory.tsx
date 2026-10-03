@@ -1,50 +1,52 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import './FutureTrajectory.css'
 
-interface WorkflowNode {
+interface TrajectoryNode {
   step: string
   title: string
-  subtitle: string
-  focus: string
-  tags: string[]
+  pillar: string
+  desc: string
+  tag: string
+  ideas?: string[]
   isDestination?: boolean
 }
 
-const WORKFLOW_NODES: WorkflowNode[] = [
+const TRAJECTORY_STAGES: TrajectoryNode[] = [
   {
     step: '01',
     title: 'ACCOUNTING',
-    subtitle: 'Statutory Core',
-    focus: 'Double-entry mechanics, IAS/IFRS standards, and tax compliance.',
-    tags: ['IAS/IFRS', 'Double-Entry'],
+    pillar: 'ACCOUNTING TECHNOLOGY',
+    desc: 'Digital accounting workflows and accounting systems.',
+    tag: 'Foundation',
   },
   {
     step: '02',
     title: 'DATA',
-    subtitle: 'Relational Intelligence',
-    focus: 'Transforming trial balances into Power BI star-schemas and DAX measures.',
-    tags: ['Power BI & DAX', 'Star-Schemas'],
+    pillar: 'FINANCIAL DATA & BI',
+    desc: 'Financial data analysis, dashboards, and decision support.',
+    tag: 'Analytics',
   },
   {
     step: '03',
-    title: 'AUTOMATION',
-    subtitle: 'Workflow Engineering',
-    focus: 'Rule-based bank matching, period controls, and zero-variance suspense clearing.',
-    tags: ['Rule Engines', 'Bank Feeds'],
+    title: 'SYSTEMS',
+    pillar: 'STRUCTURED PLATFORMS',
+    desc: 'Computerized ledgers, structured workflows, and digital accounting environments.',
+    tag: 'Workflows',
   },
   {
     step: '04',
-    title: 'AI-ASSISTED ACCOUNTING',
-    subtitle: 'Autonomous Verification',
-    focus: 'Document extraction agents, arithmetic JSON validation, and duplicate flags.',
-    tags: ['Document Agents', 'JSON Schema'],
+    title: 'AI',
+    pillar: 'AI-ASSISTED ACCOUNTING',
+    desc: 'Document processing, automation, AI agents, and accounting workflows.',
+    tag: 'Automation',
   },
   {
     step: '05',
     title: 'AUDIT & ASSURANCE',
-    subtitle: 'Technology-Driven Practice',
-    focus: 'Applying ISAs, substantive testing, and automated audit trails for CA articleship.',
-    tags: ['ISA Standards', 'Digital Audit Trails'],
+    pillar: 'AUDIT & ASSURANCE',
+    desc: 'Developing toward controls, verification, reconciliation, and assurance.',
+    tag: 'Future Direction · Developing',
+    ideas: ['Controls', 'Verification', 'Reconciliation', 'Assurance'],
     isDestination: true,
   },
 ]
@@ -53,142 +55,106 @@ export default function FutureTrajectory() {
   const reduced = useReducedMotion()
 
   const nodeFade = (index: number) => ({
-    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 14 },
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 16 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-30px' },
+    viewport: { once: true, margin: '-40px' },
     transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 },
   })
 
   return (
-    <section className="section direction-diagram-section" id="direction" aria-label="Future Direction">
-      <div className="container">
-        {/* Section Header */}
-        <div className="section-header">
-          <div className="section-eyebrow">
-            <span className="section-eyebrow__pip" />
-            <span>PROGRESSION WORKFLOW</span>
+    <section
+      className="section trajectory-section dark-section"
+      id="direction"
+      aria-label="Future Direction and Trajectory"
+    >
+      <div className="container trajectory-container">
+
+        {/* ── Section Header ─────────────────────────────────── */}
+        <div className="trajectory-header">
+          <div className="section-eyebrow section-eyebrow--dark">
+            <span className="section-eyebrow__pip section-eyebrow__pip--dark" />
+            <span>FUTURE DIRECTION</span>
           </div>
-          <h2 className="direction-diagram-title">Where accounting meets the future.</h2>
-          <p className="direction-diagram-subtitle">
-            A compounding progression where chartered accountancy rigor expands into data modeling, autonomous workflows, and intelligent assurance.
+
+          <h2 className="trajectory-title">
+            Where Accounting Meets Modern Systems.
+          </h2>
+
+          <p className="trajectory-intro">
+            A deliberate progression connecting foundational financial discipline with data analytics, automated workflows, and assurance principles.
           </p>
         </div>
 
-        {/* Compact Visual Workflow Diagram */}
-        <div className="workflow-diagram">
-          {/* Top Row: Nodes 01, 02, 03 */}
-          <div className="workflow-diagram__row workflow-diagram__row--top">
-            {/* Node 01 */}
-            <motion.div className="workflow-node" {...nodeFade(0)}>
-              <div className="workflow-node__header">
-                <span className="workflow-node__num">{WORKFLOW_NODES[0].step}</span>
-                <span className="workflow-node__subtitle">{WORKFLOW_NODES[0].subtitle}</span>
-              </div>
-              <h3 className="workflow-node__title">{WORKFLOW_NODES[0].title}</h3>
-              <p className="workflow-node__focus">{WORKFLOW_NODES[0].focus}</p>
-              <div className="workflow-node__tags">
-                {WORKFLOW_NODES[0].tags.map((t) => (
-                  <span key={t} className="workflow-tag">{t}</span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Connector 01 -> 02 */}
-            <div className="workflow-connector workflow-connector--horizontal" aria-hidden="true">
-              <span className="connector-line" />
-              <span className="connector-arrow">→</span>
-            </div>
-
-            {/* Node 02 */}
-            <motion.div className="workflow-node" {...nodeFade(1)}>
-              <div className="workflow-node__header">
-                <span className="workflow-node__num">{WORKFLOW_NODES[1].step}</span>
-                <span className="workflow-node__subtitle">{WORKFLOW_NODES[1].subtitle}</span>
-              </div>
-              <h3 className="workflow-node__title">{WORKFLOW_NODES[1].title}</h3>
-              <p className="workflow-node__focus">{WORKFLOW_NODES[1].focus}</p>
-              <div className="workflow-node__tags">
-                {WORKFLOW_NODES[1].tags.map((t) => (
-                  <span key={t} className="workflow-tag">{t}</span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Connector 02 -> 03 */}
-            <div className="workflow-connector workflow-connector--horizontal" aria-hidden="true">
-              <span className="connector-line" />
-              <span className="connector-arrow">→</span>
-            </div>
-
-            {/* Node 03 */}
-            <motion.div className="workflow-node" {...nodeFade(2)}>
-              <div className="workflow-node__header">
-                <span className="workflow-node__num">{WORKFLOW_NODES[2].step}</span>
-                <span className="workflow-node__subtitle">{WORKFLOW_NODES[2].subtitle}</span>
-              </div>
-              <h3 className="workflow-node__title">{WORKFLOW_NODES[2].title}</h3>
-              <p className="workflow-node__focus">{WORKFLOW_NODES[2].focus}</p>
-              <div className="workflow-node__tags">
-                {WORKFLOW_NODES[2].tags.map((t) => (
-                  <span key={t} className="workflow-tag">{t}</span>
-                ))}
-              </div>
-            </motion.div>
+        {/* ── Connected Directional Trajectory Stream ────────── */}
+        <div
+          className="trajectory-stream-wrap"
+          role="region"
+          aria-label="Progression: Accounting to Data, Systems, AI, and Audit"
+        >
+          {/* Background Vector Conduit Beam (Desktop) */}
+          <div className="trajectory-vector-conduit" aria-hidden="true">
+            <div className="vector-conduit-line" />
+            <div className="vector-conduit-glow" />
           </div>
 
-          {/* Vertical Bend Connector between rows (Desktop) */}
-          <div className="workflow-row-transition" aria-hidden="true">
-            <div className="row-transition-line" />
-            <div className="row-transition-arrow">↓</div>
-          </div>
+          <div className="trajectory-stages-track">
+            {TRAJECTORY_STAGES.map((stage, idx) => (
+              <motion.article
+                key={stage.step}
+                className={`trajectory-node ${stage.isDestination ? 'trajectory-node--destination' : ''}`}
+                {...nodeFade(idx)}
+              >
+                {/* Node Connector Anchor Pip */}
+                <div className="node-anchor-pip" aria-hidden="true">
+                  <span className="pip-outer">
+                    <span className="pip-core" />
+                  </span>
+                </div>
 
-          {/* Bottom Row: Nodes 04, 05 */}
-          <div className="workflow-diagram__row workflow-diagram__row--bottom">
-            {/* Node 04 */}
-            <motion.div className="workflow-node" {...nodeFade(3)}>
-              <div className="workflow-node__header">
-                <span className="workflow-node__num">{WORKFLOW_NODES[3].step}</span>
-                <span className="workflow-node__subtitle">{WORKFLOW_NODES[3].subtitle}</span>
-              </div>
-              <h3 className="workflow-node__title">{WORKFLOW_NODES[3].title}</h3>
-              <p className="workflow-node__focus">{WORKFLOW_NODES[3].focus}</p>
-              <div className="workflow-node__tags">
-                {WORKFLOW_NODES[3].tags.map((t) => (
-                  <span key={t} className="workflow-tag">{t}</span>
-                ))}
-              </div>
-            </motion.div>
+                {/* Node Header: Step & Domain Tag */}
+                <div className="node-head">
+                  <span className="node-num">{stage.step}</span>
+                  <span className={`node-tag ${stage.isDestination ? 'node-tag--destination' : ''}`}>
+                    {stage.tag}
+                  </span>
+                </div>
 
-            {/* Connector 04 -> 05 */}
-            <div className="workflow-connector workflow-connector--horizontal" aria-hidden="true">
-              <span className="connector-line" />
-              <span className="connector-arrow">→</span>
-            </div>
+                {/* Node Identity */}
+                <h3 className="node-title">{stage.title}</h3>
+                <span className="node-pillar-label">{stage.pillar}</span>
 
-            {/* Node 05: Destination */}
-            <motion.div className="workflow-node workflow-node--destination" {...nodeFade(4)}>
-              <div className="workflow-node__header">
-                <span className="workflow-node__num">{WORKFLOW_NODES[4].step}</span>
-                <span className="workflow-node__subtitle workflow-node__subtitle--emerald">{WORKFLOW_NODES[4].subtitle}</span>
-              </div>
-              <h3 className="workflow-node__title">{WORKFLOW_NODES[4].title}</h3>
-              <p className="workflow-node__focus">{WORKFLOW_NODES[4].focus}</p>
-              <div className="workflow-node__tags">
-                {WORKFLOW_NODES[4].tags.map((t) => (
-                  <span key={t} className="workflow-tag workflow-tag--emerald">{t}</span>
-                ))}
-              </div>
-            </motion.div>
+                {/* Node Description */}
+                <p className="node-desc">{stage.desc}</p>
+
+                {/* Destination Supporting Ideas (Audit & Assurance) */}
+                {stage.ideas && (
+                  <div className="node-ideas-row">
+                    {stage.ideas.map((idea) => (
+                      <span key={idea} className="idea-pill">
+                        {idea}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.article>
+            ))}
           </div>
         </div>
 
-        {/* Compact Professional Commitment Callout */}
-        <div className="workflow-commitment-callout">
-          <div className="callout-line" />
-          <p className="callout-text">
-            &ldquo;My goal is to enter professional CA articleship not merely as an accountant who relies on software, but as a builder who understands how financial systems are constructed, audited, and automated.&rdquo;
+        {/* ── Concluding Statement ───────────────────────────── */}
+        <motion.div
+          className="trajectory-statement-card"
+          initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+        >
+          <div className="statement-line" aria-hidden="true" />
+          <p className="statement-text">
+            &ldquo;Building toward technology-driven accounting, analytics and audit.&rdquo;
           </p>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   )

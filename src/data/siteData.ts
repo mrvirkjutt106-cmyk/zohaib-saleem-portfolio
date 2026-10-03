@@ -24,6 +24,7 @@ export const CONTACT = {
   linkedin: 'https://www.linkedin.com/in/mrzohaibsaleem',
   linkedinDisplay: 'linkedin.com/in/mrzohaibsaleem',
   cvAvailable: true,
+  cvPath: '/cv/Zohaib-Saleem-CV.pdf',
 } as const
 
 export const HERO_STATEMENT =
@@ -33,19 +34,17 @@ export const IMAGES = {
   /** Transparent cutout portrait for Hero */
   heroCutout:     '/images/zohaib-portrait.png',
   heroPortrait:   '/images/zohaib-portrait.png',
-  logoCutout:     '/images/zohaib-portrait.png',
-  /** Transparent full-body standing photo for Philosophy spread */
+  /** Transparent full-body standing photo for Identity / Methodology */
   fullBody:       '/images/zohaib-full-body.png',
-  /** Office/laptop environment photo for AI Automation Lab */
+  /** Office/laptop environment photo */
   officeWorking:  '/images/zohaib-office.png',
   /** Circular headshot profile for Contact Console & Navigation */
   profileCircle:  '/images/zohaib-profile.png',
-  /** ERP Project visual assets */
+  /** ERP Project visual workspace */
   erpWorkspace:   '/images/Professional ERP Accounting Dashboard Workspace.png',
-  erpMockup:      '/images/project-erp.jpg',
   projectErp:     '/images/Professional ERP Accounting Dashboard Workspace.png',
-  /** AI Lab Project visual assets */
+  /** AI Lab Project visual workspace */
   aiWorkspace:    '/images/AI-Powered Financial Automation Workspace.png',
-  aiMockup:       '/images/project-ai.jpg',
   projectAi:      '/images/AI-Powered Financial Automation Workspace.png',
 } as const
+

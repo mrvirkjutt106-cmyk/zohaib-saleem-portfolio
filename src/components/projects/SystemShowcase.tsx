@@ -1,230 +1,301 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import { IMAGES } from '../../data/siteData'
 import './SystemShowcase.css'
 
-interface FeaturePin {
-  id: string
-  label: string
-  detail: string
-}
-
-interface PortfolioProject {
+/* ── Workflow Step Definition ───────────────────────────── */
+interface WorkflowStep {
   id: string
   num: string
   title: string
-  subtitle: string
-  statement: string
-  context: string
-  status: string
-  statusBadge: string
-  whatIBuilt: string[]
-  technologies: string[]
-  image: string
-  imageAlt: string
-  pins: FeaturePin[]
-  accentColor: 'blue' | 'emerald'
+  desc: string
 }
 
-const PROJECTS_DATA: PortfolioProject[] = [
+/* ── Project Showcase Data Contract ─────────────────────── */
+interface CaseStudyProject {
+  id: string
+  num: string
+  typeTag: string
+  title: string
+  subtitle: string
+  purpose: string
+  workflowTitle: string
+  workflowSteps: WorkflowStep[]
+  supportingConcepts: string[]
+  toolset: string[]
+  statusScope: string
+  image: string
+  imageAlt: string
+  accent: 'blue' | 'emerald'
+}
+
+const CASE_STUDIES: CaseStudyProject[] = [
   {
     id: 'personal-erp',
     num: '01',
-    title: 'PERSONAL ERP SYSTEM',
-    subtitle: 'Full-Cycle Computerized General Ledger & Reporting Engine',
-    statement:
-      'Translating Chartered Accountancy curriculum into an active financial management system that enforces double-entry rules, period controls, and IAS 1 reporting standards.',
-    context:
-      'Designed to solve fragmentation in everyday financial tracking by creating a centralized, verifiable accounting architecture that tracks chart of accounts, bank reconciliations, and tax obligations.',
-    status: 'Personal Prototype & Learning System (CAF Application)',
-    statusBadge: 'Active Personal ERP',
-    whatIBuilt: [
-      'Engineered structured double-entry general ledger records mapped to a standardized chart of accounts.',
-      'Designed automated bank reconciliation controls to clear suspense items and verify trial balance integrity.',
-      'Built financial reporting templates compliant with IAS 1 presentation principles (Statement of Financial Position, P&L).',
-      'Configured sales/income tax preparation schedules reflecting Pakistan tax rules and withholding provisions.',
+    typeTag: 'PERSONAL PROTOTYPE',
+    title: 'PERSONAL ERP ACCOUNTING SYSTEM',
+    subtitle: 'Personal prototype for day-to-day financial tracking',
+    purpose: 'A personal prototype for day-to-day financial tracking.',
+    workflowTitle: 'ACCOUNTING WORKFLOW PIPELINE',
+    workflowSteps: [
+      { id: 'tx',    num: '01', title: 'TRANSACTIONS',    desc: 'Recording of bank movements, cash receipts, and expense invoices' },
+      { id: 'class', num: '02', title: 'CLASSIFICATION',  desc: 'Categorization aligned to an editable chart of accounts' },
+      { id: 'de',    num: '03', title: 'DOUBLE ENTRY',    desc: 'Double-entry balancing rules checked before posting' },
+      { id: 'gl',    num: '04', title: 'LEDGER',          desc: 'General ledger record-keeping and trial balance verification' },
+      { id: 'recon', num: '05', title: 'RECONCILIATION',  desc: 'Bank statement matching and tracking of suspense differences' },
+      { id: 'rep',   num: '06', title: 'REPORTING',       desc: 'Monthly, quarterly, and annual balance sheet and P&L drafts' },
+      { id: 'tax',   num: '07', title: 'TAX SUPPORT',     desc: 'Tax-return drafting support and preliminary tax schedules' },
     ],
-    technologies: ['Advanced Excel', 'QuickBooks Online', 'Xero', 'IAS / IFRS Standards', 'Tax Schedules'],
-    image: '/images/Professional ERP Accounting Dashboard Workspace.png',
-    imageAlt: 'Personal ERP Accounting System Transparent Workspace Visual',
-    accentColor: 'blue',
-    pins: [
-      { id: 'gl', label: 'General Ledger', detail: 'Automated double-entry trial balance controls' },
-      { id: 'recon', label: 'Bank Reconciliation', detail: 'Zero-variance suspense clearing engine' },
-      { id: 'ias', label: 'IAS 1 Reporting', detail: 'Standardized balance sheet & P&L generation' },
-      { id: 'tax', label: 'Tax Schedules', detail: 'Withholding and sales tax preparation matrices' },
+    supportingConcepts: [
+      'Double-entry records',
+      'Monthly / quarterly / yearly reporting',
+      'Reconciliation',
+      'Tax-return drafting support',
+      'Editable categories/accounts',
     ],
+    toolset: [
+      'Advanced Excel',
+      'QuickBooks Online',
+      'Xero',
+      'Financial Reporting Formats',
+      'Tax Schedules',
+    ],
+    statusScope:
+      'Personal prototype engineered for day-to-day personal financial tracking and applied CAF accounting study. Independent learning project; not a commercial software product.',
+    image: IMAGES.projectErp,
+    imageAlt: 'Personal ERP Accounting System — Transparent Workspace Interface Artwork',
+    accent: 'blue',
   },
   {
     id: 'ai-agent-lab',
     num: '02',
+    typeTag: 'EXPERIMENTAL / RESEARCH PROTOTYPE',
     title: 'AI AGENT & AUTOMATION LAB',
-    subtitle: 'Autonomous Financial Document Ingestion & Verification Engine',
-    statement:
-      'An experimental environment testing autonomous document extraction, schema validation, and audit trail generation for accounting and pre-audit workflows.',
-    context:
-      'Manual bookkeeping and audit sampling suffer from tedious data entry and human oversight. This prototype uses structured AI extraction to parse receipts, validate math, and flag discrepancies.',
-    status: 'Personal Exploration & Prototype Lab (Personal Research)',
-    statusBadge: 'Experimental AI Lab',
-    whatIBuilt: [
-      'Prototyped document extraction agents to parse unstructured vendor invoices and receipt PDFs into structured data.',
-      'Implemented JSON schema validation to cross-check arithmetic, tax totals, and duplicate invoice entries.',
-      'Constructed automated bank transaction matchers using rule engines and fuzzy description matching.',
-      'Developed interactive Power BI variance dashboards to visualize extracted trends and flagged anomalies.',
+    subtitle: 'AI-assisted document and accounting workflow automation research',
+    purpose:
+      'Experimental environment for exploring AI agents, document processing, and accounting workflow automation.',
+    workflowTitle: 'DOCUMENT & AUTOMATION WORKFLOW',
+    workflowSteps: [
+      { id: 'doc',     num: '01', title: 'DOCUMENTS',      desc: 'Ingestion of sample PDF receipts, invoices, and bank files' },
+      { id: 'extract', num: '02', title: 'EXTRACTION',     desc: 'Document processing and automated text extraction' },
+      { id: 'class',   num: '03', title: 'CLASSIFICATION', desc: 'Transaction categorization and account mapping' },
+      { id: 'valid',   num: '04', title: 'VALIDATION',     desc: 'Mathematical validation, total verification, and duplicate checks' },
+      { id: 'match',   num: '05', title: 'MATCHING',       desc: 'Transaction matching against bank records and ledger items' },
+      { id: 'auto',    num: '06', title: 'AUTOMATION',     desc: 'Workflow automation for recurring processing steps' },
+      { id: 'anal',    num: '07', title: 'ANALYSIS',       desc: 'Financial analysis, variance exploration, and trend summaries' },
+      { id: 'rep',     num: '08', title: 'REPORTING',       desc: 'AI-assisted reporting and draft summary generation' },
     ],
-    technologies: ['AI Prompt Pipelines', 'Power BI & DAX', 'Document Parsers', 'JSON Schema Rules', 'Audit Matrices'],
-    image: '/images/AI-Powered Financial Automation Workspace.png',
-    imageAlt: 'AI Agent & Financial Automation Workspace Transparent Visual',
-    accentColor: 'emerald',
-    pins: [
-      { id: 'ocr', label: 'Invoice Parser', detail: 'Unstructured PDF to structured transaction schema' },
-      { id: 'schema', label: 'Schema Validator', detail: 'Arithmetic reconciliation & duplicate flags' },
-      { id: 'matcher', label: 'Rule Engine', detail: 'Automated bank feed match & clearance' },
-      { id: 'bi', label: 'Power BI Deck', detail: 'Visual variance decomposition & anomaly heatmaps' },
+    supportingConcepts: [
+      'Document extraction',
+      'Transaction categorization',
+      'Reconciliation',
+      'Financial analysis',
+      'Workflow automation',
+      'AI-assisted reporting',
     ],
+    toolset: [
+      'Python',
+      'Document Extraction Tools',
+      'Data Validation Logic',
+      'Power BI (Visual Analytics)',
+      'AI Prompting',
+    ],
+    statusScope:
+      'Experimental personal research lab exploring AI-assisted document processing and accounting workflow automation research. Independent learning project; no commercial deployment or client work.',
+    image: IMAGES.projectAi,
+    imageAlt: 'AI Agent & Automation Lab — Transparent Workspace Interface Artwork',
+    accent: 'emerald',
   },
 ]
 
 export default function SystemShowcase() {
   const reduced = useReducedMotion()
-  const [activePin, setActivePin] = useState<{ [key: string]: string | null }>({
-    'personal-erp': 'gl',
-    'ai-agent-lab': 'ocr',
+
+  // Track active workflow step per project for interactive drill-down
+  const [activeStep, setActiveStep] = useState<{ [projectId: string]: string }>({
+    'personal-erp': 'de',
+    'ai-agent-lab': 'extract',
   })
 
   return (
-    <section className="section projects-star-section" id="projects" aria-label="Featured Projects">
-      <div className="container">
-        {/* Section Header */}
-        <div className="section-header">
+    <section className="section showcase-section" id="projects" aria-label="Selected Work">
+      <div className="container showcase-container">
+
+        {/* ── Section Header ─────────────────────────────────── */}
+        <div className="showcase-header">
           <div className="section-eyebrow">
             <span className="section-eyebrow__pip" />
-            <span>FEATURED PROJECTS</span>
+            <span>SELECTED WORK</span>
           </div>
-          <h2 className="projects-star-title">What I build &amp; explore.</h2>
-          <p className="projects-star-statement">
-            &ldquo;I build practical systems where accounting knowledge meets data, automation and AI.&rdquo;
+
+          <h2 className="showcase-title">
+            Applied Systems &amp; Explorations.
+          </h2>
+
+          <p className="showcase-intro">
+            Translating accounting discipline into functional prototypes, structured data models, and automated financial workflows. These projects represent applied experiments in personal financial tracking and intelligent automation.
           </p>
         </div>
 
-        {/* The Two Star Showcases */}
-        <div className="projects-star-list">
-          {PROJECTS_DATA.map((project, index) => {
-            const currentPinId = activePin[project.id]
-            const activePinObj = project.pins.find((p) => p.id === currentPinId) || project.pins[0]
-            const isReversed = index % 2 !== 0
+        {/* ── Featured Projects List ─────────────────────────── */}
+        <div className="showcase-list">
+          {CASE_STUDIES.map((project, index) => {
+            const currentStepId = activeStep[project.id]
+            const activeStepObj =
+              project.workflowSteps.find((s) => s.id === currentStepId) || project.workflowSteps[0]
 
             return (
               <motion.article
                 key={project.id}
-                className={`project-star-showcase project-star-showcase--${project.accentColor} ${
-                  isReversed ? 'project-star-showcase--reversed' : ''
-                }`}
-                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 30 }}
+                className={`case-study case-study--${project.accent}`}
+                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Visual Canvas: Large Floating Transparent Artwork with Environmental Depth */}
-                <div className="project-star-canvas">
-                  {/* Environmental Ambient Halo */}
+                {/* 1. Project Identity Header */}
+                <div className="case-study__header">
+                  <div className="case-study__meta">
+                    <span className="case-study__num">{project.num}</span>
+                    <span className="case-study__type-tag">{project.typeTag}</span>
+                  </div>
+
+                  <h3 className="case-study__title">{project.title}</h3>
+                  <p className="case-study__subtitle">{project.subtitle}</p>
+                  <p className="case-study__purpose">{project.purpose}</p>
+                </div>
+
+                {/* 2. Visual-First Arena: Large Floating Transparent Artwork */}
+                <div className="case-study__visual-stage">
+                  {/* Atmospheric Environmental Halos */}
                   <div
-                    className={`project-star-aura project-star-aura--${project.accentColor}`}
+                    className={`visual-stage__halo visual-stage__halo--${project.accent}`}
                     aria-hidden="true"
                   />
 
-                  {/* Faint Architectural Grid & Fine Lines behind image */}
-                  <div className="project-star-backdrop-grid" aria-hidden="true">
-                    <div className="grid-cross grid-cross--tl">+</div>
-                    <div className="grid-cross grid-cross--tr">+</div>
-                    <div className="grid-cross grid-cross--bl">+</div>
-                    <div className="grid-cross grid-cross--br">+</div>
+                  {/* Architectural Framing Grid Crosshairs */}
+                  <div className="visual-stage__frame" aria-hidden="true">
+                    <span className="frame-cross frame-cross--tl">+</span>
+                    <span className="frame-cross frame-cross--tr">+</span>
+                    <span className="frame-cross frame-cross--bl">+</span>
+                    <span className="frame-cross frame-cross--br">+</span>
                   </div>
 
-                  {/* Floating Transparent Project Image (NO CARD, NO BORDER) */}
-                  <div className="project-star-artwork-wrap">
+                  {/* Large Transparent PNG Image (No baked box, genuine alpha) */}
+                  <div className="visual-stage__artwork-wrap">
                     <img
                       src={project.image}
                       alt={project.imageAlt}
-                      className="project-star-img"
+                      className="visual-stage__img"
                       loading="lazy"
+                      draggable="false"
                     />
                   </div>
+                </div>
 
-                  {/* Interactive Feature Pins / Badges directly hovering over visual space */}
-                  <div className="project-star-pins-bar">
-                    {project.pins.map((pin) => (
-                      <button
-                        key={pin.id}
-                        type="button"
-                        className={`pin-button ${currentPinId === pin.id ? 'pin-button--active' : ''}`}
-                        onClick={() => setActivePin({ ...activePin, [project.id]: pin.id })}
-                      >
-                        <span className="pin-dot" />
-                        <span className="pin-text">{pin.label}</span>
-                      </button>
-                    ))}
+                {/* 3. Integrated Visual Workflow Sequence */}
+                <div className="case-study__workflow-block">
+                  <div className="workflow-block__header">
+                    <span className="workflow-block__label">{project.workflowTitle}</span>
+                    <span className="workflow-block__instruction">
+                      Select any stage to inspect the processing logic
+                    </span>
                   </div>
 
-                  {/* Live Detail Tooltip for Active Pin */}
-                  {activePinObj && (
-                    <div className="project-star-pin-tooltip">
-                      <span className="tooltip-tag">FEATURE SPOTLIGHT</span>
-                      <strong className="tooltip-title">{activePinObj.label}</strong>
-                      <span className="tooltip-desc">{activePinObj.detail}</span>
-                    </div>
+                  {/* Sequential Pathway Strip */}
+                  <div
+                    className="workflow-pipeline"
+                    role="tablist"
+                    aria-label={`${project.title} Workflow Pipeline`}
+                  >
+                    {project.workflowSteps.map((step, idx) => {
+                      const isActive = step.id === currentStepId
+                      return (
+                        <div key={step.id} className="workflow-step-wrapper">
+                          <button
+                            type="button"
+                            role="tab"
+                            aria-selected={isActive}
+                            className={`workflow-step-btn ${isActive ? 'is-active' : ''}`}
+                            onClick={() => setActiveStep({ ...activeStep, [project.id]: step.id })}
+                          >
+                            <span className="step-btn__num">{step.num}</span>
+                            <span className="step-btn__title">{step.title}</span>
+                          </button>
+                          {idx < project.workflowSteps.length - 1 && (
+                            <span className="workflow-arrow" aria-hidden="true">→</span>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  {/* Active Step Explainer Strip */}
+                  {activeStepObj && (
+                    <motion.div
+                      key={activeStepObj.id}
+                      className="workflow-explainer"
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="explainer__badge">STAGE {activeStepObj.num}</span>
+                      <strong className="explainer__title">{activeStepObj.title}:</strong>
+                      <span className="explainer__desc">{activeStepObj.desc}</span>
+                    </motion.div>
                   )}
                 </div>
 
-                {/* Narrative & Engineering Details */}
-                <div className="project-star-narrative">
-                  <div className="project-star-meta-top">
-                    <span className="project-star-num">{project.num}</span>
-                    <span className="project-star-status-pill">{project.statusBadge}</span>
-                  </div>
-
-                  <h3 className="project-star-name">{project.title}</h3>
-                  <h4 className="project-star-subtitle">{project.subtitle}</h4>
-
-                  <p className="project-star-statement-text">{project.statement}</p>
-
-                  <div className="project-star-context-block">
-                    <span className="context-label">PROBLEM &amp; CONTEXT</span>
-                    <p className="context-body">{project.context}</p>
-                  </div>
-
-                  <div className="project-star-built-block">
-                    <span className="built-label">WHAT I BUILT &amp; EXPLORED:</span>
-                    <ul className="built-list">
-                      {project.whatIBuilt.map((item, idx) => (
-                        <li key={idx} className="built-item">
-                          <span className="built-bullet" aria-hidden="true">✔</span>
-                          <span className="built-text">{item}</span>
+                {/* 4. Compact Supporting Details: Architecture, Tools & Status */}
+                <div className="case-study__details-grid">
+                  {/* Column 1: Core System Concepts */}
+                  <div className="details-card">
+                    <span className="details-card__heading">CORE CONCEPTS &amp; CAPABILITIES</span>
+                    <ul className="details-list">
+                      {project.supportingConcepts.map((concept) => (
+                        <li key={concept} className="details-item">
+                          <span className="details-check" aria-hidden="true">✔</span>
+                          <span className="details-text">{concept}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="project-star-tools-row">
-                    <span className="tools-label">APPLIED TOOLS &amp; STANDARDS:</span>
-                    <div className="tools-tags">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="tech-tag">
-                          {tech}
+                  {/* Column 2: Applied Toolset */}
+                  <div className="details-card">
+                    <span className="details-card__heading">TOOLS &amp; AREAS EXPLORED</span>
+                    <div className="tool-badges">
+                      {project.toolset.map((tool) => (
+                        <span key={tool} className="tool-badge">
+                          {tool}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="project-star-scope-tag">
-                    <span className="scope-indicator-dot" />
-                    <span>{project.status}</span>
+                  {/* Column 3: Grounded Scope Boundary */}
+                  <div className="details-card details-card--scope">
+                    <span className="details-card__heading">PROTOTYPE SCOPE &amp; BOUNDARY</span>
+                    <p className="scope-text">{project.statusScope}</p>
+                    <div className="scope-indicator">
+                      <span className="scope-dot" />
+                      <span className="scope-label">Grounded Learning &amp; Research</span>
+                    </div>
                   </div>
                 </div>
+
+                {/* Subtle Divider between Project 01 and Project 02 */}
+                {index < CASE_STUDIES.length - 1 && (
+                  <div className="case-study__separator" aria-hidden="true" />
+                )}
               </motion.article>
             )
           })}
         </div>
+
       </div>
     </section>
   )
 }
+

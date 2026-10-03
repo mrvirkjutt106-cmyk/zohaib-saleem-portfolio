@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { PERSON, IMAGES } from '../../data/siteData'
+import { IMAGES, CONTACT } from '../../data/siteData'
 import './HeaderNav.css'
 
 interface NavLink {
@@ -15,20 +15,20 @@ export default function HeaderNav() {
 
   const navLinks: NavLink[] = [
     { label: 'About', href: '#about', id: 'about' },
-    { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'Work', href: '#projects', id: 'projects' },
     { label: 'Capabilities', href: '#capabilities', id: 'capabilities' },
-    { label: 'Journey', href: '#journey', id: 'journey' },
-    { label: 'Certifications', href: '#certifications', id: 'certifications' },
+    { label: 'CA Journey', href: '#journey', id: 'journey' },
+    { label: 'Credentials', href: '#certifications', id: 'certifications' },
     { label: 'Direction', href: '#direction', id: 'direction' },
   ]
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30)
+      setScrolled(window.scrollY > 20)
 
       // Active section detection
       const sections = ['hero', ...navLinks.map((l) => l.id), 'contact']
-      const scrollPosition = window.scrollY + 200
+      const scrollPosition = window.scrollY + 180
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i])
@@ -44,23 +44,29 @@ export default function HeaderNav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
   const closeMenu = () => setMobileMenuOpen(false)
 
   return (
     <header className={`header-nav ${scrolled ? 'header-nav--scrolled' : ''}`}>
       <div className="header-nav__container">
-        {/* Brand Identity */}
+        {/* Brand Identity — Exactly "Zohaib Saleem" */}
         <a href="#hero" className="header-nav__brand" onClick={closeMenu} aria-label="Zohaib Saleem Home">
           <div className="header-nav__avatar-frame">
-            <img src={IMAGES.profileCircle} alt="ZS" className="header-nav__avatar-img" />
+            <img src={IMAGES.profileCircle} alt="Zohaib Saleem" className="header-nav__avatar-img" />
           </div>
-          <div className="header-nav__brand-text">
-            <span className="header-nav__brand-name">{PERSON.name}</span>
-            <span className="header-nav__brand-badge">
-              <span className="badge-live-dot" aria-hidden="true" />
-              <span>CAF • ICAP</span>
-            </span>
-          </div>
+          <span className="header-nav__brand-name">Zohaib Saleem</span>
         </a>
 
         {/* Minimal Desktop Navigation */}
@@ -75,7 +81,6 @@ export default function HeaderNav() {
                     className={`header-nav__link ${isActive ? 'header-nav__link--active' : ''}`}
                   >
                     <span>{link.label}</span>
-                    {isActive && <span className="nav-active-pill" />}
                   </a>
                 </li>
               )
@@ -96,7 +101,7 @@ export default function HeaderNav() {
             className={`header-nav__toggle ${mobileMenuOpen ? 'header-nav__toggle--active' : ''}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
-            aria-label="Toggle navigation menu"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             <span className="toggle-line toggle-line--1" />
             <span className="toggle-line toggle-line--2" />
@@ -104,7 +109,7 @@ export default function HeaderNav() {
         </div>
       </div>
 
-      {/* Mobile Animated Overlay */}
+      {/* Mobile Intentional Slide Navigation */}
       <div
         className={`header-nav__mobile-overlay ${mobileMenuOpen ? 'header-nav__mobile-overlay--open' : ''}`}
         aria-hidden={!mobileMenuOpen}
@@ -112,7 +117,10 @@ export default function HeaderNav() {
         <div className="mobile-overlay__backdrop" onClick={closeMenu} />
         <div className="mobile-overlay__panel">
           <div className="mobile-overlay__header">
-            <div className="mobile-overlay__title">Navigation</div>
+            <div className="mobile-overlay__brand-info">
+              <span className="mobile-overlay__brand-name">Zohaib Saleem</span>
+              <span className="mobile-overlay__brand-sub">Accounting × Data × AI</span>
+            </div>
             <button
               type="button"
               className="mobile-overlay__close-btn"
@@ -122,7 +130,8 @@ export default function HeaderNav() {
               ✕
             </button>
           </div>
-          <nav className="mobile-overlay__nav">
+
+          <nav className="mobile-overlay__nav" aria-label="Mobile Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.id}
@@ -131,14 +140,25 @@ export default function HeaderNav() {
                 onClick={closeMenu}
               >
                 <span>{link.label}</span>
-                <span className="mobile-overlay__arrow">→</span>
+                <span className="mobile-overlay__arrow" aria-hidden="true">→</span>
               </a>
             ))}
           </nav>
+
           <div className="mobile-overlay__footer">
             <a href="#contact" className="mobile-overlay__cta" onClick={closeMenu}>
               Let&apos;s Connect
             </a>
+            {CONTACT.cvPath && (
+              <a
+                href={CONTACT.cvPath}
+                download="Zohaib-Saleem-CV.pdf"
+                className="mobile-overlay__cv-link"
+                onClick={closeMenu}
+              >
+                Download CV (PDF)
+              </a>
+            )}
           </div>
         </div>
       </div>

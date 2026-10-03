@@ -93,12 +93,16 @@ img, video {
 
 .section {
   position: relative;
-  padding: var(--space-20) 0;
+  padding: var(--section-padding-y) 0;
   overflow: hidden;
 }
 
+.section--compact {
+  padding: var(--section-padding-compact) 0;
+}
+
 .section-header {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--section-header-gap);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -126,11 +130,11 @@ img, video {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
   font-weight: 700;
   color: var(--color-navy);
   letter-spacing: -0.03em;
-  line-height: 1.12;
+  line-height: 1.1;
   margin: 0;
 }
 
@@ -162,6 +166,39 @@ img, video {
 .badge-pill:hover {
   border-color: var(--color-accent-blue);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Gradient Text Utility ──────────────────────── */
+.text-gradient-blue {
+  background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-navy {
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-accent-indigo) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Dark Section Inverted Utilities ────────────── */
+.dark-section .section-eyebrow {
+  color: rgba(165, 185, 255, 0.85);
+}
+
+.dark-section .section-eyebrow__pip {
+  background-color: var(--color-accent-blue);
+}
+
+.dark-section .section-title {
+  color: var(--color-dark-text-primary);
+}
+
+.dark-section .section-subtitle {
+  color: var(--color-dark-text-secondary);
 }
 
 /* ── Accessibility ───────────────────────────────── */

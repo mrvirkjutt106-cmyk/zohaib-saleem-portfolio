@@ -7,180 +7,160 @@ export default function ContactConsole() {
   const reduced = useReducedMotion()
   const [copied, setCopied] = useState(false)
 
-  const handleCopyEmail = () => {
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     navigator.clipboard.writeText(CONTACT.email)
     setCopied(true)
-    setTimeout(() => setCopied(false), 2400)
+    setTimeout(() => setCopied(false), 2200)
   }
 
-  const contactChannels = [
+  const contactLinks = [
     {
       id: 'email',
-      label: 'EMAIL',
-      val: CONTACT.email,
+      label: 'Email',
+      value: CONTACT.email,
       href: `mailto:${CONTACT.email}`,
-      actionText: 'Send Email',
       isExternal: false,
+      isEmail: true,
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+      ),
     },
     {
       id: 'linkedin',
-      label: 'LINKEDIN',
-      val: CONTACT.linkedinDisplay,
+      label: 'LinkedIn',
+      value: CONTACT.linkedinDisplay,
       href: CONTACT.linkedin,
-      actionText: 'Connect on LinkedIn',
       isExternal: true,
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect width="4" height="12" x="2" y="9" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      ),
     },
     {
       id: 'whatsapp',
-      label: 'WHATSAPP',
-      val: CONTACT.phone,
+      label: 'WhatsApp',
+      value: CONTACT.phone,
       href: CONTACT.whatsapp,
-      actionText: 'Direct Message',
       isExternal: true,
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
     },
     {
-      id: 'resume',
-      label: 'CURRICULUM VITAE',
-      val: 'Comprehensive Academic & Credentials PDF',
-      href: '/resume.pdf',
-      actionText: 'Download CV',
+      id: 'cv',
+      label: 'Curriculum Vitae',
+      value: 'Zohaib-Saleem-CV.pdf',
+      href: '/cv/Zohaib-Saleem-CV.pdf',
       isExternal: false,
       isDownload: true,
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" x2="12" y1="15" y2="3" />
+        </svg>
+      ),
     },
   ]
 
+  const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: reduced ? 0 : 16 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-30px' },
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay },
+  })
+
   return (
-    <section className="section contact-final-scene" id="contact" aria-label="Contact">
-      <div className="container">
-        {/* Massive Closing Statement */}
-        <div className="contact-final-header">
-          <motion.div
-            className="contact-eyebrow"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="contact-eyebrow-pip" />
-            <span>LET&apos;S CONNECT</span>
-          </motion.div>
+    <section
+      className="section contact-signature-section"
+      id="contact"
+      aria-label="Contact Zohaib Saleem"
+    >
+      <div className="container contact-signature-container">
 
-          <motion.h2
-            className="contact-huge-headline"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-          >
-            LET&apos;S BUILD SOMETHING USEFUL.
-          </motion.h2>
+        {/* ── Closing Signature Composition ─────────────────── */}
+        <motion.div className="contact-signature-card" {...fadeUp(0.05)}>
 
-          <motion.p
-            className="contact-lead-subtext"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.65, delay: 0.2 }}
-          >
-            Open to professional discussions, CA articleship and training opportunities, financial data projects, and technology-driven accounting collaborations.
-          </motion.p>
-        </div>
+          {/* 1. Integrated Circular Portrait */}
+          <div className="contact-portrait-aura">
+            <div className="portrait-ring">
+              <img
+                src={IMAGES.profileCircle}
+                alt="Zohaib Saleem"
+                className="portrait-img"
+                loading="lazy"
+                width={128}
+                height={128}
+              />
+            </div>
+          </div>
 
-        {/* Spacious 2-Column Final Layout */}
-        <div className="contact-final-spread">
-          {/* Left Column: Personal Identity & Availability */}
-          <motion.div
-            className="contact-identity-card"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-          >
-            <div className="contact-avatar-cluster">
-              <div className="contact-avatar-ring">
-                <img
-                  src={IMAGES.profileCircle}
-                  alt="Zohaib Saleem"
-                  className="contact-avatar-img"
-                  loading="lazy"
-                />
-              </div>
-              <div className="contact-live-availability">
-                <span className="availability-pulse-dot" />
-                <span className="availability-text">Available for CA Articleship &amp; Projects</span>
-              </div>
+          {/* 2. Header & Closing Eyebrow */}
+          <div className="contact-identity-block">
+            <div className="contact-eyebrow">
+              <span className="contact-eyebrow-pip" />
+              <span>LET&apos;S CONNECT</span>
             </div>
 
-            <div className="contact-bio-details">
-              <h3 className="contact-name">{PERSON.name}</h3>
-              <p className="contact-role">Chartered Accountancy Candidate (CAF) • ICAP</p>
-              <p className="contact-location">Lahore, Pakistan • PKT (UTC+5)</p>
-            </div>
+            <h2 className="contact-name">{PERSON.name}</h2>
+            <p className="contact-candidate-tag">CAF Candidate</p>
+            <p className="contact-disciplines">Accounting × Data × AI</p>
+          </div>
 
-            <div className="contact-core-pillars-mini">
-              <span className="mini-pillar">ACCOUNTING</span>
-              <span className="mini-cross">×</span>
-              <span className="mini-pillar">DATA</span>
-              <span className="mini-cross">×</span>
-              <span className="mini-pillar">AI</span>
-            </div>
-          </motion.div>
-
-          {/* Right Column: Tactile & Interactive Channels */}
-          <div className="contact-channels-list">
-            {contactChannels.map((item, index) => (
-              <motion.div
-                key={item.id}
-                className="contact-channel-row"
-                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
-              >
-                <div className="channel-meta">
-                  <span className="channel-label">{item.label}</span>
-                  {item.id === 'email' ? (
-                    <div className="channel-email-group">
-                      <a href={item.href} className="channel-value">
-                        {item.val}
-                      </a>
-                      <button
-                        type="button"
-                        onClick={handleCopyEmail}
-                        className="channel-copy-btn"
-                        aria-label="Copy email address"
-                      >
-                        {copied ? 'Copied!' : 'Copy'}
-                      </button>
-                    </div>
-                  ) : (
-                    <a
-                      href={item.href}
-                      target={item.isExternal ? '_blank' : undefined}
-                      rel={item.isExternal ? 'noopener noreferrer' : undefined}
-                      download={item.isDownload ? 'Zohaib_Saleem_CV.pdf' : undefined}
-                      className="channel-value"
-                    >
-                      {item.val}
-                    </a>
-                  )}
-                </div>
-
+          {/* 3. Four Direct Functional Contact Links */}
+          <div className="contact-actions-grid" role="group" aria-label="Direct contact links">
+            {contactLinks.map((item) => (
+              <div key={item.id} className="contact-action-item">
                 <a
                   href={item.href}
                   target={item.isExternal ? '_blank' : undefined}
                   rel={item.isExternal ? 'noopener noreferrer' : undefined}
-                  download={item.isDownload ? 'Zohaib_Saleem_CV.pdf' : undefined}
-                  className="channel-action-btn"
-                  aria-label={`${item.actionText} for ${item.label}`}
+                  download={item.isDownload ? 'Zohaib-Saleem-CV.pdf' : undefined}
+                  className="contact-action-link"
+                  aria-label={`${item.label}: ${item.value}`}
                 >
-                  <span className="action-label">{item.actionText}</span>
-                  <span className="action-arrow" aria-hidden="true">→</span>
+                  <div className="action-icon-box" aria-hidden="true">
+                    {item.icon}
+                  </div>
+
+                  <div className="action-info">
+                    <span className="action-label">{item.label}</span>
+                    <span className="action-val">{item.value}</span>
+                  </div>
+
+                  <span className="action-arrow" aria-hidden="true">
+                    {item.isDownload ? '↓' : '→'}
+                  </span>
                 </a>
-              </motion.div>
+
+                {/* Email Copy Helper */}
+                {item.isEmail && (
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="action-copy-btn"
+                    aria-label="Copy email address to clipboard"
+                    title="Copy email to clipboard"
+                  >
+                    {copied ? 'Copied' : 'Copy'}
+                  </button>
+                )}
+              </div>
             ))}
           </div>
-        </div>
+
+        </motion.div>
+
       </div>
     </section>
   )

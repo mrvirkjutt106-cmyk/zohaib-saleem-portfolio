@@ -1,11 +1,11 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { IMAGES } from '../../data/siteData'
+import { IMAGES, CONTACT } from '../../data/siteData'
 import './HeroChamber.css'
 
 export default function HeroChamber() {
   const reduced = useReducedMotion()
 
-  const transitionFade = (delay = 0) => ({
+  const fadeUp = (delay = 0) => ({
     initial: reduced ? { opacity: 0 } : { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1], delay },
@@ -13,111 +13,111 @@ export default function HeroChamber() {
 
   return (
     <section className="hero-experience" id="hero" aria-label="Zohaib Saleem — Accounting, Data, AI">
-      {/* Background ambient lighting for depth */}
-      <div className="hero-experience__glow hero-experience__glow--top" aria-hidden="true" />
-      <div className="hero-experience__glow hero-experience__glow--right" aria-hidden="true" />
+      {/* Restrained luminous ambient background */}
+      <div className="hero-experience__ambient" aria-hidden="true">
+        <div className="hero-ambient-glow hero-ambient-glow--blue" />
+        <div className="hero-ambient-glow hero-ambient-glow--violet" />
+      </div>
 
       <div className="container hero-experience__container">
-        {/* Top Professional Status Bar */}
-        <motion.div className="hero-experience__status-bar" {...transitionFade(0.05)}>
-          <div className="hero-status-pill">
-            <span className="hero-status-dot" aria-hidden="true" />
-            <span className="hero-status-text">Chartered Accountancy Candidate (CAF) • ICAP</span>
-          </div>
-          <span className="hero-location-text">Lahore, Pakistan</span>
-        </motion.div>
-
-        {/* Central Asymmetric Stage */}
-        <div className="hero-experience__stage">
-          {/* Left: Expressive Typography & Positioning */}
-          <div className="hero-experience__content">
-            <motion.div className="hero-name-block" {...transitionFade(0.12)}>
+        {/* Main Editorial Composition */}
+        <div className="hero-stage">
+          {/* Left Column: Primary Typography & Direction */}
+          <div className="hero-content">
+            {/* 1. Zohaib Saleem — Bold, large, editorial typography */}
+            <motion.div className="hero-title-group" {...fadeUp(0.08)}>
               <h1 className="hero-name">
                 <span className="hero-name__first">ZOHAIB</span>
                 <span className="hero-name__last">SALEEM</span>
               </h1>
             </motion.div>
 
-            <motion.div className="hero-discipline-strip" {...transitionFade(0.2)}>
+            {/* 2. ACCOUNTING × DATA × AI */}
+            <motion.div className="hero-discipline-strip" {...fadeUp(0.22)}>
               <span className="discipline-tag">ACCOUNTING</span>
-              <span className="discipline-operator">×</span>
+              <span className="discipline-sep" aria-hidden="true">×</span>
               <span className="discipline-tag">DATA</span>
-              <span className="discipline-operator">×</span>
+              <span className="discipline-sep" aria-hidden="true">×</span>
               <span className="discipline-tag">AI</span>
             </motion.div>
 
-            <motion.h2 className="hero-headline" {...transitionFade(0.28)}>
-              Accounting professional who builds with technology.
-            </motion.h2>
-
-            <motion.p className="hero-description" {...transitionFade(0.34)}>
-              Developing applied financial reporting systems, relational Power BI pipelines, and autonomous document automation workflows with a future trajectory toward technology-driven audit and assurance.
+            {/* 3. Short positioning statement (Exact approved line) */}
+            <motion.p className="hero-positioning" {...fadeUp(0.3)}>
+              CA student exploring the intersection of accounting, financial data, digital systems, and AI.
             </motion.p>
 
-            <motion.div className="hero-cta-group" {...transitionFade(0.4)}>
+            {/* 5, 6, 7. Action CTAs */}
+            <motion.div className="hero-actions" {...fadeUp(0.38)}>
               <a href="#projects" className="hero-btn hero-btn--primary">
-                <span>Explore Projects</span>
+                <span>Explore My Work</span>
                 <span className="hero-btn__arrow" aria-hidden="true">↓</span>
               </a>
-              <a href="#about" className="hero-btn hero-btn--secondary">
-                <span>About &amp; Methodology</span>
+              <a href="#journey" className="hero-btn hero-btn--secondary">
+                <span>CA Journey</span>
                 <span className="hero-btn__arrow" aria-hidden="true">→</span>
               </a>
+              {CONTACT.cvPath && (
+                <a
+                  href={CONTACT.cvPath}
+                  download="Zohaib-Saleem-CV.pdf"
+                  className="hero-btn hero-btn--cv"
+                  title="Download Curriculum Vitae (PDF)"
+                >
+                  <span className="cv-icon" aria-hidden="true">📄</span>
+                  <span>CV</span>
+                </a>
+              )}
             </motion.div>
           </div>
 
-          {/* Right: Integrated Cutout Portrait (Clean, Frame-Free, Sized Prominently) */}
-          <div className="hero-experience__visual">
-            {/* Luminous soft aura behind transparent portrait */}
-            <div className="hero-portrait-aura" aria-hidden="true" />
+          {/* Right Column: Visual Anchor & Integrated Portrait */}
+          <motion.div
+            className="hero-visual"
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
+          >
+            {/* Architectural radial framing backdrop */}
+            <div className="hero-portrait-frame" aria-hidden="true">
+              <div className="hero-frame-ring hero-frame-ring--outer" />
+              <div className="hero-frame-ring hero-frame-ring--inner" />
+              <div className="hero-frame-hairline hero-frame-hairline--h" />
+              <div className="hero-frame-hairline hero-frame-hairline--v" />
+            </div>
 
-            {/* Cutout Portrait Container — Visually Contained & Aligned */}
-            <motion.div
-              className="hero-portrait-wrap"
-              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-            >
+            {/* Real Transparent Portrait */}
+            <div className="hero-portrait-wrapper">
               <img
                 src={IMAGES.heroCutout}
                 alt="Zohaib Saleem — Accounting, Data, AI"
-                className="hero-portrait-img"
+                className="hero-portrait-image"
+                loading="eager"
                 draggable="false"
               />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Bottom Credibility Strip */}
-        <motion.div className="hero-experience__metrics" {...transitionFade(0.48)}>
-          <div className="hero-metric-item">
-            <span className="hero-metric-label">CAF Progress</span>
-            <span className="hero-metric-value">5 of 8 Passed</span>
-            <span className="hero-metric-sub">FAR-1 • CMA • BLAW • TAX • Companies Law</span>
+        {/* Supporting Micro-Status Strip: Compact, Factual & Grounded */}
+        <motion.div className="hero-credibility-ribbon" {...fadeUp(0.46)}>
+          <div className="ribbon-item">
+            <span className="ribbon-label">ACADEMIC FOUNDATION</span>
+            <span className="ribbon-val">CAF Intermediate · 5/8 Passed</span>
           </div>
-
-          <div className="hero-metric-divider" aria-hidden="true" />
-
-          <div className="hero-metric-item">
-            <span className="hero-metric-label">Foundation</span>
-            <span className="hero-metric-value">First Attempt Merit</span>
-            <span className="hero-metric-sub">ICAP Pre-Requisite Competencies (PRC)</span>
+          <span className="ribbon-divider" aria-hidden="true" />
+          <div className="ribbon-item">
+            <span className="ribbon-label">APPLIED PROTOTYPES</span>
+            <span className="ribbon-val">Personal ERP &amp; Automation Lab</span>
           </div>
-
-          <div className="hero-metric-divider" aria-hidden="true" />
-
-          <div className="hero-metric-item">
-            <span className="hero-metric-label">Cloud Systems</span>
-            <span className="hero-metric-value">Certified ProAdvisor</span>
-            <span className="hero-metric-sub">QuickBooks Online &amp; Xero</span>
+          <span className="ribbon-divider" aria-hidden="true" />
+          <div className="ribbon-item">
+            <span className="ribbon-label">DIGITAL ACCOUNTING</span>
+            <span className="ribbon-val">QuickBooks Online &amp; Xero</span>
           </div>
-
-          <div className="hero-metric-divider" aria-hidden="true" />
-
-          <div className="hero-metric-item">
-            <span className="hero-metric-label">Future Practice</span>
-            <span className="hero-metric-value">Audit &amp; Assurance</span>
-            <span className="hero-metric-sub">Tech-Driven Articleship Trajectory</span>
+          <span className="ribbon-divider" aria-hidden="true" />
+          <div className="ribbon-item">
+            <span className="ribbon-label">FUTURE DIRECTION</span>
+            <span className="ribbon-val">Audit &amp; Assurance Trajectory</span>
           </div>
         </motion.div>
       </div>
