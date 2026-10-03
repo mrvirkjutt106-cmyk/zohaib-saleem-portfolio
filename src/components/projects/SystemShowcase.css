@@ -552,27 +552,77 @@
     margin-bottom: 4px;
   }
 
-  .case-study__workflow {
+  .case-study__workflow-block {
     order: 6;
     padding: 14px 12px;
     gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .workflow-track {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  .workflow-block__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 4px;
   }
 
-  .workflow-step-btn {
-    flex: 1 1 calc(50% - 6px);
-    min-height: 42px;
-    padding: 6px 8px;
+  .workflow-block__label {
     font-size: 0.72rem;
   }
 
-  .workflow-step-arrow {
-    display: none;
+  .workflow-block__instruction {
+    font-size: 0.68rem;
+  }
+
+  /* Vertical sequence: every stage readable in viewport with connecting downward arrows */
+  .workflow-pipeline {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    overflow-x: visible;
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .workflow-step-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .workflow-step-btn {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    min-height: 44px;
+    font-size: 0.78rem;
+    box-sizing: border-box;
+  }
+
+  .workflow-arrow {
+    display: block;
+    transform: rotate(90deg);
+    font-size: 0.85rem;
+    line-height: 1;
+    color: var(--color-accent-blue);
+    opacity: 0.65;
+    margin: 1px 0;
+    user-select: none;
+  }
+
+  .case-study--emerald .workflow-arrow {
+    color: #059669;
+  }
+
+  .workflow-explainer {
+    margin-top: 6px;
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    line-height: 1.45;
   }
 
   .case-study__details-grid {
