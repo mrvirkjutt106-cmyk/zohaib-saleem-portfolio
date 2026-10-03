@@ -369,10 +369,11 @@
 }
 
 /* ── Responsive Refinements ──────────────────────────────── */
+/* ── Responsive Refinements ──────────────────────────────── */
 @media (max-width: 960px) {
   .hero-stage {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 
   .hero-content {
@@ -386,15 +387,15 @@
   }
 
   .hero-portrait-image {
-    max-height: 320px;
+    max-height: 280px;
   }
 
   .hero-credibility-ribbon {
     margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    padding: 16px;
+    gap: 12px;
+    padding: 14px;
   }
 
   .ribbon-divider {
@@ -402,24 +403,89 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+  .hero-chamber-section {
+    padding-top: calc(var(--nav-height) + 12px);
+    padding-bottom: 28px;
+  }
+
+  .hero-stage {
+    gap: 20px;
+  }
+
+  .hero-visual {
+    margin: 0 auto;
+    max-width: 260px;
+  }
+
+  .hero-frame-ring--outer {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-frame-ring--inner {
+    width: 168px;
+    height: 168px;
+  }
+
+  .hero-portrait-image {
+    max-height: 220px;
+  }
+
   .hero-name {
-    font-size: clamp(2.8rem, 12vw, 3.8rem);
+    font-size: clamp(2.3rem, 10vw, 3.2rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-disciplines {
+    font-size: clamp(0.72rem, 3.2vw, 0.82rem);
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .hero-positioning {
+    font-size: 0.94rem;
+    line-height: 1.5;
   }
 
   .hero-actions {
     width: 100%;
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+    margin-top: 8px;
   }
 
   .hero-btn {
     justify-content: center;
     width: 100%;
+    min-height: 48px;
+    font-size: 0.88rem;
   }
 
   .hero-credibility-ribbon {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+    margin-top: 18px;
+  }
+
+  .ribbon-item {
+    gap: 2px;
+  }
+
+  .ribbon-label {
+    font-size: 0.58rem;
+  }
+
+  .ribbon-val {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-credibility-ribbon {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 }

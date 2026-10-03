@@ -509,6 +509,88 @@
   margin: clamp(24px, 3.5vw, 40px) 0 0 0;
 }
 
+/* ── Mobile Layout (< 768px): Recomposed Project Flow ────── */
+@media (max-width: 767px) {
+  .case-study {
+    gap: 14px;
+  }
+
+  /* Reorder header elements around artwork */
+  .case-study__header {
+    display: contents;
+  }
+
+  .case-study__meta {
+    order: 1;
+    margin-bottom: 2px;
+  }
+
+  .case-study__visual-stage {
+    order: 2;
+    min-height: 200px;
+    padding: 14px 10px;
+    margin: 4px 0 8px 0;
+  }
+
+  .case-study__title {
+    order: 3;
+    font-size: clamp(1.4rem, 6.5vw, 1.85rem);
+    line-height: 1.2;
+  }
+
+  .case-study__subtitle {
+    order: 4;
+    font-size: 0.88rem;
+    margin-top: -4px;
+  }
+
+  .case-study__purpose {
+    order: 5;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin-top: -2px;
+    margin-bottom: 4px;
+  }
+
+  .case-study__workflow {
+    order: 6;
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .workflow-track {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .workflow-step-btn {
+    flex: 1 1 calc(50% - 6px);
+    min-height: 42px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
+
+  .workflow-step-arrow {
+    display: none;
+  }
+
+  .case-study__details-grid {
+    order: 7;
+    gap: 12px;
+  }
+
+  .details-card {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .case-study__separator {
+    order: 8;
+    margin-top: 18px;
+  }
+}
+
 /* ── Accessibility & Reduced Motion ──────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .visual-stage__artwork-wrap,

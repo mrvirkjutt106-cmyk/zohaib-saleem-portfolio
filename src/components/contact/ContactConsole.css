@@ -280,48 +280,50 @@
 /* ── 3. Mobile: 0–767px ─────────────────────────────────────── */
 @media (max-width: 767px) {
   .contact-signature-section {
-    padding: var(--space-10) 0;
+    padding: 36px 0;
   }
 
   .contact-signature-card {
-    padding: var(--space-6) var(--space-4);
-    gap: var(--space-5);
+    padding: 24px 16px;
+    gap: 18px;
     border-radius: var(--radius-lg);
   }
 
   .portrait-ring {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
 
   .contact-name {
-    font-size: 1.85rem;
+    font-size: clamp(1.6rem, 7vw, 1.85rem);
   }
 
   .contact-candidate-tag {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .contact-disciplines {
-    font-size: 0.72rem;
+    font-size: 0.74rem;
   }
 
   .contact-actions-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: 10px;
   }
 
   .contact-action-link {
-    padding: var(--space-3) var(--space-4);
+    padding: 10px 14px;
     min-height: 48px;
   }
 
   .action-val {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .action-copy-btn {
-    right: 40px;
+    right: 36px;
+    font-size: 0.64rem;
+    padding: 2px 7px;
   }
 }
 

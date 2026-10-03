@@ -614,13 +614,41 @@
   /* Intentional vertical narrative progression */
   .timeline-stages-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: 12px;
     position: relative;
-    padding-left: var(--space-2);
+    padding-left: 20px;
+  }
+
+  .timeline-stages-grid::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, #2563EB 0%, #4F46E5 50%, #059669 100%);
+    opacity: 0.35;
+    border-radius: 1px;
+    z-index: 0;
   }
 
   .timeline-stage-card {
-    padding: var(--space-4);
+    position: relative;
+    padding: 14px 16px;
+  }
+
+  .timeline-stage-card::before {
+    content: '';
+    position: absolute;
+    left: -19px;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 2px solid #2563EB;
+    z-index: 1;
+    box-shadow: 0 1px 4px rgba(11, 19, 43, 0.1);
   }
 
   .stage-badge {
@@ -633,15 +661,15 @@
 
   /* Compact Monumental Anchor for Mobile */
   .anchor-58-chamber {
-    padding: var(--space-6) var(--space-5);
-    gap: var(--space-6);
+    padding: 20px 16px;
+    gap: 18px;
     border-radius: var(--radius-lg);
   }
 
   .anchor-figures-wrap {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-3);
+    gap: 10px;
   }
 
   .anchor-big-score {
@@ -649,15 +677,15 @@
   }
 
   .score-num--passed {
-    font-size: 3.6rem;
+    font-size: clamp(3.2rem, 14vw, 4.4rem);
   }
 
   .score-divider {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 8vw, 2.6rem);
   }
 
   .score-num--total {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 8vw, 2.6rem);
   }
 
   .anchor-main-label {

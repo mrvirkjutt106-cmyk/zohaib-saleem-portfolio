@@ -128,7 +128,7 @@
   overflow: visible;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .identity-radial-stage {
     display: block;
   }
@@ -375,7 +375,7 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .identity-mobile-pathway {
     display: none;
   }
@@ -388,8 +388,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 320px;
-  padding: 20px 16px 12px;
+  max-width: clamp(280px, 88vw, 350px);
+  padding: 16px 14px 12px;
   background: #FFFFFF;
   border: 1px solid rgba(11, 19, 43, 0.08);
   border-radius: var(--radius-lg);
@@ -402,8 +402,8 @@
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(79, 70, 229, 0.05) 50%, transparent 70%);
   filter: blur(28px);
   z-index: 0;
@@ -412,11 +412,11 @@
 
 .mobile-portrait-pedestal {
   position: absolute;
-  bottom: 50px;
+  bottom: 44px;
   left: calc(50% - 15px);
   transform: translateX(-50%);
-  width: 160px;
-  height: 18px;
+  width: 140px;
+  height: 16px;
   background: radial-gradient(ellipse at center, rgba(11, 19, 43, 0.18) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(4px);
@@ -427,8 +427,8 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 220px;
-  height: 310px;
+  max-width: 200px;
+  height: 250px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -455,8 +455,8 @@
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 8px;
+  padding-top: 8px;
   border-top: 1px solid rgba(11, 19, 43, 0.06);
   width: 100%;
   text-align: center;
@@ -476,6 +476,30 @@
   color: var(--color-text-secondary);
 }
 
+/* Mobile Conduit Connecting Portrait to Methodology Sequence */
+.mobile-pathway-conduit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: -6px 0;
+  z-index: 2;
+}
+
+.mobile-conduit-line {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(180deg, #2563EB 0%, #4F46E5 100%);
+  opacity: 0.6;
+}
+
+.mobile-conduit-arrow {
+  font-size: 0.85rem;
+  color: #4F46E5;
+  line-height: 1;
+  font-weight: 700;
+}
+
 /* Mobile Sequential Timeline Spine */
 .mobile-timeline-spine {
   position: relative;
@@ -483,17 +507,18 @@
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  padding-left: 20px;
+  max-width: 520px;
+  padding-left: 24px;
 }
 
 .mobile-spine-track {
   position: absolute;
   top: 18px;
   bottom: 18px;
-  left: 9px;
+  left: 11px;
   width: 2px;
   background: linear-gradient(180deg, #2563EB 0%, #4F46E5 30%, #0284C7 60%, #7C3AED 85%, #1E3A8A 100%);
-  opacity: 0.25;
+  opacity: 0.35;
   border-radius: 1px;
 }
 
@@ -508,10 +533,10 @@
   position: relative;
   z-index: 2;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  margin-left: -20px;
-  margin-top: 12px;
+  width: 24px;
+  height: 24px;
+  margin-left: -24px;
+  margin-top: 10px;
   border-radius: 50%;
   background: #FFFFFF;
   border: 2px solid;
@@ -523,7 +548,7 @@
 
 .mobile-pip-num {
   font-family: var(--font-mono, monospace);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   font-weight: 800;
   line-height: 1;
 }
@@ -543,14 +568,31 @@
 .mobile-domain-item--navy .mobile-item-pip   { border-color: #1E3A8A; }
 .mobile-domain-item--navy .mobile-pip-num    { color: #1E3A8A; }
 
+.mobile-item-branch {
+  position: absolute;
+  left: 0;
+  top: 21px;
+  width: 14px;
+  height: 1px;
+  background: rgba(11, 19, 43, 0.12);
+  z-index: 1;
+}
+
 .mobile-item-card {
   flex: 1;
   background: #FFFFFF;
   border: 1px solid rgba(11, 19, 43, 0.08);
+  border-left: 3.5px solid;
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 12px 15px;
   box-shadow: 0 2px 10px -2px rgba(11, 19, 43, 0.05);
 }
+
+.mobile-domain-item--blue .mobile-item-card   { border-left-color: #2563EB; }
+.mobile-domain-item--indigo .mobile-item-card { border-left-color: #4F46E5; }
+.mobile-domain-item--cyan .mobile-item-card   { border-left-color: #0284C7; }
+.mobile-domain-item--violet .mobile-item-card { border-left-color: #7C3AED; }
+.mobile-domain-item--navy .mobile-item-card   { border-left-color: #1E3A8A; }
 
 .mobile-item-header {
   display: flex;
@@ -562,7 +604,7 @@
 
 .mobile-item-title {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   color: var(--color-navy);
@@ -583,8 +625,8 @@
 }
 
 .mobile-item-label {
-  font-size: 0.74rem;
-  line-height: 1.44;
+  font-size: 0.78rem;
+  line-height: 1.48;
   color: var(--color-text-secondary);
   margin: 0;
 }

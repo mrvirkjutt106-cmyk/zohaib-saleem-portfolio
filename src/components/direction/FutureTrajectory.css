@@ -381,27 +381,67 @@
   /* Intentional vertical narrative progression */
   .trajectory-stages-track {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: 14px;
     position: relative;
-    padding-left: var(--space-2);
+    padding-left: 22px;
+  }
+
+  .trajectory-stages-track::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 8px;
+    width: 2px;
+    background: linear-gradient(180deg,
+      #3B82F6 0%,
+      #60A5FA 25%,
+      #818CF8 50%,
+      #A78BFA 75%,
+      #34D399 100%);
+    opacity: 0.45;
+    border-radius: 1px;
+    z-index: 0;
   }
 
   .trajectory-node {
-    padding: var(--space-4);
-    gap: var(--space-2);
+    position: relative;
+    padding: 14px 16px;
+    gap: 8px;
+  }
+
+  /* Connecting pip to conduit line */
+  .trajectory-node::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #0B132B;
+    border: 2px solid #60A5FA;
+    z-index: 1;
+    box-shadow: 0 0 6px rgba(96, 165, 250, 0.4);
+  }
+
+  .trajectory-node--destination::before {
+    border-color: #34D399;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
   }
 
   .node-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   .node-desc {
     font-size: 0.8rem;
+    line-height: 1.45;
   }
 
   .trajectory-statement-card {
-    padding: var(--space-4) var(--space-5);
-    gap: var(--space-4);
+    padding: 16px 18px;
+    gap: 14px;
   }
 
   .statement-line {
@@ -409,7 +449,8 @@
   }
 
   .statement-text {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
 }
 

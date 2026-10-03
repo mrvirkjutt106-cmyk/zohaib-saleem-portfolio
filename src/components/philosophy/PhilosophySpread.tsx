@@ -411,6 +411,12 @@ export default function PhilosophySpread() {
             </div>
           </motion.div>
 
+          {/* Connector conduit from portrait anchor to methodology domains */}
+          <div className="mobile-pathway-conduit" aria-hidden="true">
+            <span className="mobile-conduit-line" />
+            <span className="mobile-conduit-arrow">↓</span>
+          </div>
+
           {/* Vertical Visual Timeline Spine with 5 Domains */}
           <div className="mobile-timeline-spine">
             <div className="mobile-spine-track" aria-hidden="true" />
@@ -425,6 +431,7 @@ export default function PhilosophySpread() {
                 <div className="mobile-item-pip">
                   <span className="mobile-pip-num">{domain.num}</span>
                 </div>
+                <div className="mobile-item-branch" aria-hidden="true" />
 
                 {/* Content Card */}
                 <div className="mobile-item-card">
