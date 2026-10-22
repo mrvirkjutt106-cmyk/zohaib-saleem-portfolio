@@ -28,7 +28,7 @@ export const CONTACT = {
 } as const
 
 export const HERO_STATEMENT =
-  'Chartered Accountancy student synthesizing statutory accounting standards, financial data modeling, and emerging AI automation with a future trajectory toward technology-driven audit and assurance.'
+  'Chartered Accountancy student focused on accounting and audit, exploring financial data, digital systems, and AI.'
 
 export const IMAGES = {
   /** Transparent cutout portrait for Hero */
@@ -47,4 +47,3 @@ export const IMAGES = {
   aiWorkspace:    '/images/AI-Powered Financial Automation Workspace.png',
   projectAi:      '/images/AI-Powered Financial Automation Workspace.png',
 } as const
-
