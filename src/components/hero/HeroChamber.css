@@ -237,8 +237,8 @@
 
   .hero-experience__overlay {
     background:
-      linear-gradient(90deg, rgba(10, 16, 32, 0.96) 0%, rgba(10, 16, 32, 0.94) 60%, rgba(10, 16, 32, 0.84) 85%, rgba(10, 16, 32, 0.72) 100%),
-      linear-gradient(180deg, rgba(10, 16, 32, 0.52) 0%, rgba(10, 16, 32, 0.12) 36%, rgba(10, 16, 32, 0.64) 100%);
+      linear-gradient(90deg, rgba(10, 16, 32, 0.96) 0%, rgba(10, 16, 32, 0.94) 42%, rgba(10, 16, 32, 0.84) 62%, rgba(10, 16, 32, 0.68) 76%, rgba(10, 16, 32, 0.42) 100%),
+      linear-gradient(180deg, rgba(10, 16, 32, 0.1) 0%, rgba(10, 16, 32, 0) 38%, rgba(10, 16, 32, 0.18) 100%);
   }
 
   .hero-stage {
@@ -269,6 +269,10 @@
 
   .hero-name {
     font-size: 40px;
+  }
+
+  .hero-positioning {
+    max-width: min(34rem, 70vw);
   }
 
   .hero-discipline {
