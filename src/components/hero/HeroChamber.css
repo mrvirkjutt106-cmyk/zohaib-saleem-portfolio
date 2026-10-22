@@ -263,7 +263,12 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .hero-experience__container {
+    padding-right: max(var(--margin-outer), env(safe-area-inset-right));
+    padding-left: max(var(--margin-outer), env(safe-area-inset-left));
+  }
+
   .hero-experience__portrait {
     left: 0;
   }
@@ -312,8 +317,8 @@
 
 @media (max-width: 360px) {
   .hero-experience__container {
-    padding-right: max(16px, env(safe-area-inset-right));
-    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(var(--margin-outer), env(safe-area-inset-right));
+    padding-left: max(var(--margin-outer), env(safe-area-inset-left));
   }
 
   .hero-eyebrow {

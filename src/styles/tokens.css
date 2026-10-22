@@ -136,7 +136,7 @@
 @media (max-width: 768px) {
   :root {
     --nav-height: 64px;
-    --margin-outer: 16px;
+    --margin-outer: 12px;
     --section-padding-y: clamp(26px, 5.5vw, 38px);
     --section-padding-compact: clamp(20px, 4vw, 30px);
   }
