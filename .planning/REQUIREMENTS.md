@@ -44,28 +44,26 @@ None committed. Further interactive or content features can be considered after 
 
 ## Traceability
 
-Traceability will be populated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IDENTITY-01 | Pending roadmap | Pending |
-| PROOF-01 | Pending roadmap | Pending |
-| VISUAL-01 | Pending roadmap | Pending |
-| VISUAL-02 | Pending roadmap | Pending |
-| VISUAL-03 | Pending roadmap | Pending |
-| NAV-01 | Pending roadmap | Pending |
-| CONTENT-01 | Pending roadmap | Pending |
-| CONTACT-01 | Pending roadmap | Pending |
-| MOTION-01 | Pending roadmap | Pending |
-| RESP-01 | Pending roadmap | Pending |
-| ACCESS-01 | Pending roadmap | Pending |
-| PERF-01 | Pending roadmap | Pending |
+| IDENTITY-01 | Phase 1 | Pending |
+| PROOF-01 | Phase 2 | Pending |
+| VISUAL-01 | Phase 1 | Pending |
+| VISUAL-02 | Phase 1 | Pending |
+| VISUAL-03 | Phase 1 | Pending |
+| NAV-01 | Phase 3 | Pending |
+| CONTENT-01 | Phase 2 | Pending |
+| CONTACT-01 | Phase 3 | Pending |
+| MOTION-01 | Phase 4 | Pending |
+| RESP-01 | Phase 4 | Pending |
+| ACCESS-01 | Phase 4 | Pending |
+| PERF-01 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 12 total
-- Mapped to phases: 0
-- Unmapped: 12 (will be mapped during roadmap creation)
+- Mapped to phases: 12
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-10-22*
-*Last updated: 2026-10-22 after scope approval*
+*Last updated: 2026-10-22 after roadmap creation*
