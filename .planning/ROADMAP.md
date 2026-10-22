@@ -6,7 +6,7 @@ This MVP redesign turns the existing React portfolio into a hiring-focused exper
 
 ## Phases
 
-- [ ] **Phase 1: Hiring-Focused Hero & Art Direction** - Establish the visual foundation and a clear, cinematic-but-readable first impression for accounting and audit visitors.
+- [x] **Phase 1: Hiring-Focused Hero & Art Direction** - Establish the visual foundation and a clear, cinematic-but-readable first impression for accounting and audit visitors. (completed 2026-10-22)
 - [ ] **Phase 2: Professional Evidence & Story** - Make verified projects, capabilities, CA journey, credentials, and direction easy to evaluate.
 - [ ] **Phase 3: Navigation & Contact Pathways** - Let desktop and mobile visitors move through the portfolio and reach contact or the CV.
 - [ ] **Phase 4: Accessible, Responsive & Smooth Experience** - Ensure the complete redesign is usable, accessible, and performant across devices and motion preferences.
@@ -24,7 +24,7 @@ This MVP redesign turns the existing React portfolio into a hiring-focused exper
   3. Visitors encounter a coherent editorial visual language, combining readable light content with selective dark feature moments and clear hierarchy.
   4. The opening experience remains legible and usable at narrow mobile and desktop widths, with no clipped content or horizontal overflow.
 
-**Plans**: 1/1 plans executed
+**Plans**: 1/1 plans complete
 - [x] 01-01-PLAN.md
 
 **UI hint**: yes
@@ -72,7 +72,7 @@ This MVP redesign turns the existing React portfolio into a hiring-focused exper
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Hiring-Focused Hero & Art Direction | 1/1 | In Progress | - |
+| 1. Hiring-Focused Hero & Art Direction | 1/1 | Complete    | 2026-10-22 |
 | 2. Professional Evidence & Story | 0/TBD | Not started | - |
 | 3. Navigation & Contact Pathways | 0/TBD | Not started | - |
 | 4. Accessible, Responsive & Smooth Experience | 0/TBD | Not started | - |
