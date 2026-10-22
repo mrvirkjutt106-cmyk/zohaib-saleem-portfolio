@@ -52,7 +52,7 @@ coverage:
     requirement: VISUAL-02
     verification:
       - kind: automated_ui
-        ref: "Browser: 320, 375, 768, 959, 960, and 1440px; 48px actions; no horizontal overflow; 200% page-zoom simulation at 1280px."
+        ref: "Browser: 320, 375, 768, 959, 960, and 1440px; 48px actions; no horizontal overflow; actual browser zoom at 200% from a 1280px viewport."
         status: pass
       - kind: manual_procedural
         ref: "Canvas sampling of rendered portrait plus gradients: minimum normal-text contrast 5.17:1; primary control boundary 19.09:1 after outline. Fallback text and boundary checks also passed."
@@ -61,7 +61,7 @@ coverage:
         ref: "npm run build (TypeScript and Vite production build)"
         status: pass
     human_judgment: true
-    rationale: "Automated viewport and contrast checks do not replace a final human visual review; 200% reflow was emulated with page zoom rather than browser chrome zoom."
+    rationale: "Automated viewport and contrast checks do not replace a final human visual review of composition and editorial coherence."
 
 duration: 39min
 completed: 2026-10-22
@@ -115,7 +115,8 @@ None. The outline is an in-scope correction required to satisfy the plan's contr
 
 - React 18 warned when `fetchPriority` was passed as a JSX prop. Setting the native image property via a ref removed the warning.
 - The initial mobile primary-action boundary measured 2.81:1. A light outline retained the approved blue fill and passed the re-check.
-- Browser chrome was not set to 200% zoom; reflow was checked with a 2× page-zoom simulation at a 1280px viewport. All other requested viewport and contrast checks passed.
+- Actual browser zoom at 200% from a 1280px viewport retained the portrait, all four facts, and all actions without horizontal overflow; the three actions remained 48px high.
+- Final subjective visual sign-off remains for the user; screenshots at desktop and mobile widths were reviewed during verification.
 
 ## User Setup Required
 
